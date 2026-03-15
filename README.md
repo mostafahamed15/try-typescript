@@ -282,7 +282,7 @@ This project is licensed under the [MIT License](./LICENSE).
 - ⭐ Star us on GitHub
 - 🐛 Report bugs via GitHub Issues
 - 💬 Join our community
-- 📧 Contact: [your-email@example.com]
+- 📧 Contact: oler@try-typescript.com
 
 ---
 
