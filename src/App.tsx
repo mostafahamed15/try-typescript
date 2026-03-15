@@ -1,5 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
-import Editor from "@monaco-editor/react";
+import { useState, useCallback, useEffect, lazy, Suspense } from "react";
 import confetti from "canvas-confetti";
 import {
   Terminal,
@@ -18,6 +17,9 @@ import {
   List,
   LogOut,
 } from "lucide-react";
+
+const Editor = lazy(() => import("@monaco-editor/react"));
+
 import { getLessonsByLocale, type Lesson, type Level } from "./data/lessons";
 import { getInitialLocale, t, type Locale } from "./i18n";
 
@@ -626,26 +628,34 @@ export default function App() {
           </div>
 
           <div className="flex-1 relative">
-            <Editor
-              height="100%"
-              defaultLanguage="typescript"
-              value={code}
-              onChange={(value) => setCode(value || "")}
-              theme="vs-dark"
-              options={{
-                fontSize: 14,
-                fontFamily: "JetBrains Mono, Fira Code, monospace",
-                minimap: { enabled: false },
-                scrollBeyondLastLine: false,
-                automaticLayout: true,
-                tabSize: 2,
-                wordWrap: "on",
-                lineNumbers: "on",
-                renderLineHighlight: "line",
-                cursorBlinking: "smooth",
-                padding: { top: 16, bottom: 16 },
-              }}
-            />
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center h-full bg-[#1e293b]">
+                  <Loader2 size={32} className="text-[#3178c6] animate-spin" />
+                </div>
+              }
+            >
+              <Editor
+                height="100%"
+                defaultLanguage="typescript"
+                value={code}
+                onChange={(value) => setCode(value || "")}
+                theme="vs-dark"
+                options={{
+                  fontSize: 14,
+                  fontFamily: "JetBrains Mono, Fira Code, monospace",
+                  minimap: { enabled: false },
+                  scrollBeyondLastLine: false,
+                  automaticLayout: true,
+                  tabSize: 2,
+                  wordWrap: "on",
+                  lineNumbers: "on",
+                  renderLineHighlight: "line",
+                  cursorBlinking: "smooth",
+                  padding: { top: 16, bottom: 16 },
+                }}
+              />
+            </Suspense>
 
             <button
               onClick={handleRunCode}
