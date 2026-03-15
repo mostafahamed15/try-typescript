@@ -6,7 +6,7 @@ import Callback from "./callback.tsx";
 
 const path = window.location.pathname;
 
-const Root = path === "/callback" ? Callback : App;
+const Root = path === "/auth/callback" ? Callback : App;
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

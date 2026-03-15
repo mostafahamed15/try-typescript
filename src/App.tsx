@@ -345,7 +345,7 @@ export default function App() {
   };
 
   const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/callback`;
+    const redirectUri = `${window.location.origin}/auth/callback`;
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=read:user`;
   };
 

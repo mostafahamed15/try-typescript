@@ -10,6 +10,10 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
+    if (url.pathname === "/health" || url.pathname === "/") {
+      return Response.json({ status: "ok", timestamp: new Date().toISOString() });
+    }
+
     if (url.pathname === "/auth/callback") {
       return handleCallback(request, env);
     }
