@@ -19,21 +19,15 @@ const Editor = lazy(() => import("@monaco-editor/react"));
 import { getLessonsByLocale, type Lesson, type Level } from "./data/lessons";
 import { getInitialLocale, t, type Locale } from "./i18n";
 
-function stripTypeAnnotations(code: string): string {
-  let js = code;
-
-  js = js.replace(/^interface\s+\w+(\s+extends\s+[\w,\s&<>]+)?\s*\{[\s\S]*?\n\}/gm, "");
-  js = js.replace(/^type\s+\w+(\s*<[^>]*>)?\s*=\s*[^;]+;/gm, "");
-  js = js.replace(/:\s*(string|number|boolean|void|never|any|unknown|null|undefined)\b/g, "");
-  js = js.replace(/<(string|number|boolean|void|never|any|unknown|null|undefined)>/g, "");
-  js = js.replace(/\b(public|private|protected|readonly)\s+/g, "");
-  js = js.replace(/\s+as\s+\w+/g, "");
-  js = js.replace(/^\s*@\w+\s*$/gm, "");
-
-  return js;
+async function transpileCode(code: string): Promise<string> {
+  const ts = await import("typescript");
+  const result = ts.transpileModule(code, {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ESNext },
+  });
+  return result.outputText;
 }
 
-function executeCode(code: string): string[] {
+async function executeCode(code: string): Promise<string[]> {
   const logs: string[] = [];
 
   const originalLog = console.log;
@@ -64,7 +58,7 @@ function executeCode(code: string): string[] {
   };
 
   try {
-    const jsCode = stripTypeAnnotations(code);
+    const jsCode = await transpileCode(code);
     new Function(jsCode)();
   } catch (err) {
     logs.push(`❌ Erro: ${err instanceof Error ? err.message : String(err)}`);
@@ -234,22 +228,20 @@ export default function App() {
     });
   }, []);
 
-  const handleRunCode = () => {
+  const handleRunCode = async () => {
     setIsCompiling(true);
     setOutput([]);
 
-    setTimeout(() => {
-      const results = executeCode(code);
-      setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
+    const results = await executeCode(code);
+    setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
 
-      const hasError = results.some((r) => r.startsWith("❌"));
-      if (!hasError && !completedIds.has(currentLesson.id)) {
-        setCompletedIds((prev) => new Set(prev).add(currentLesson.id));
-        celebrateCompletion();
-      }
+    const hasError = results.some((r) => r.startsWith("❌"));
+    if (!hasError && !completedIds.has(currentLesson.id)) {
+      setCompletedIds((prev) => new Set(prev).add(currentLesson.id));
+      celebrateCompletion();
+    }
 
-      setIsCompiling(false);
-    }, 600);
+    setIsCompiling(false);
   };
 
   const handleResetCode = () => {
