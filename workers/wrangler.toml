@@ -8,5 +8,3 @@ REPO = "try-typescript"
 FRONTEND_URL = "http://localhost:5173"
 
 [secrets]
-GITHUB_CLIENT_ID
-GITHUB_CLIENT_SECRET
