@@ -22,7 +22,7 @@ import { getInitialLocale, t, type Locale } from "./i18n";
 function stripTypeAnnotations(code: string): string {
   let js = code;
 
-  js = js.replace(/^interface\s+\w+(\s+extends\s+[\w,\s&<>]+)?\s*\{[^}]*\}/gms, "");
+  js = js.replace(/^interface\s+\w+(\s+extends\s+[\w,\s&<>]+)?\s*\{[\s\S]*?\n\}/gm, "");
   js = js.replace(/^type\s+\w+(\s*<[^>]*>)?\s*=\s*[^;]+;/gm, "");
   js = js.replace(/:\s*(string|number|boolean|void|never|any|unknown|null|undefined)\b/g, "");
   js = js.replace(/<(string|number|boolean|void|never|any|unknown|null|undefined)>/g, "");
