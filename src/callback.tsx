@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
 
-const AUTH_WORKER_URL = "https://try-typescript-auth.your-user.workers.dev";
+const AUTH_WORKER_URL = import.meta.env.VITE_AUTH_WORKER_URL || "https://api.try-typescript.com";
 
 export default function Callback() {
   useEffect(() => {
