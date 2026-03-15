@@ -6,7 +6,7 @@ const AUTH_WORKER_URL = "https://try-typescript-auth.your-user.workers.dev";
 export default function Callback() {
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get("code");
-    
+
     if (code) {
       window.location.href = `${AUTH_WORKER_URL}/auth/callback?code=${code}`;
     } else {

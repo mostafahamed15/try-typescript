@@ -231,9 +231,7 @@ function AuthModal({
             {!isLoggedIn ? t("loginToTest", locale) : t("likedThePlayground", locale)}
           </h3>
           <p className="text-center text-slate-400 text-sm mb-8">
-            {!isLoggedIn
-              ? t("loginDescription", locale)
-              : t("likedDescription", locale)}
+            {!isLoggedIn ? t("loginDescription", locale) : t("likedDescription", locale)}
           </p>
 
           <div className="space-y-4">
@@ -282,7 +280,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [hasLiked, setHasLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const allLessons = getLessonsByLocale(locale);
   const [currentLesson, setCurrentLesson] = useState<Lesson>(allLessons[0]);
   const [code, setCode] = useState(allLessons[0].starterCode);
@@ -420,13 +418,13 @@ export default function App() {
     setTimeout(() => {
       const results = executeCode(code);
       setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
-      
+
       const hasError = results.some((r) => r.startsWith("❌"));
       if (!hasError && !completedIds.has(currentLesson.id)) {
         setCompletedIds((prev) => new Set(prev).add(currentLesson.id));
         celebrateCompletion();
       }
-      
+
       setIsCompiling(false);
     }, 600);
   };
@@ -448,7 +446,7 @@ export default function App() {
     <div className="flex flex-col h-screen bg-[#0f172a] text-slate-200 font-sans overflow-hidden">
       <header className="flex items-center justify-between px-4 md:px-6 py-3 bg-[#1e293b] border-b border-slate-700 shadow-lg z-20">
         <div className="flex items-center space-x-3">
-          <button 
+          <button
             onClick={() => setShowLessonList(!showLessonList)}
             className="md:hidden p-2 hover:bg-slate-700 rounded-lg transition-colors"
           >
@@ -528,7 +526,9 @@ export default function App() {
       </header>
 
       <main className="flex flex-1 overflow-hidden relative">
-        <aside className={`w-full md:w-80 lg:w-96 bg-[#0f172a] border-r border-slate-800 flex flex-col z-10 absolute md:relative inset-0 ${showLessonList ? 'translate-x-0' : '-translate-x-full md:translate-x-0'} transition-transform duration-300`}>
+        <aside
+          className={`w-full md:w-80 lg:w-96 bg-[#0f172a] border-r border-slate-800 flex flex-col z-10 absolute md:relative inset-0 ${showLessonList ? "translate-x-0" : "-translate-x-full md:translate-x-0"} transition-transform duration-300`}
+        >
           <div className="p-4 md:p-6 flex-1 overflow-y-auto">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2 text-[#3178c6] uppercase tracking-widest text-xs font-bold">
@@ -606,7 +606,7 @@ export default function App() {
         <div className="flex-1 flex flex-col bg-[#1e293b]">
           <div className="flex items-center justify-between bg-[#0f172a] px-4 pt-2 border-b border-slate-800">
             <div className="flex items-center gap-2">
-              <button 
+              <button
                 onClick={() => setShowLessonList(true)}
                 className="md:hidden p-2 hover:bg-slate-700 rounded transition-colors"
               >

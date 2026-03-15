@@ -23,7 +23,7 @@ export default {
     }
 
     return new Response("Not Found", { status: 404 });
-  }
+  },
 };
 
 async function handleCallback(request: Request, env: Env): Promise<Response> {
@@ -38,13 +38,13 @@ async function handleCallback(request: Request, env: Env): Promise<Response> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify({
         client_id: env.GITHUB_CLIENT_ID,
         client_secret: env.GITHUB_CLIENT_SECRET,
-        code
-      })
+        code,
+      }),
     });
 
     const tokenData = await tokenResponse.json();
@@ -59,12 +59,18 @@ async function handleCallback(request: Request, env: Env): Promise<Response> {
     const response = new Response(null, {
       status: 302,
       headers: {
-        Location: starred ? "/?auth=success" : "/?auth=likerequired"
-      }
+        Location: starred ? "/?auth=success" : "/?auth=likerequired",
+      },
     });
 
-    response.headers.set("Set-Cookie", `token=${accessToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`);
-    response.headers.set("Set-Cookie", `starred=${starred ? "true" : "false"}; Path=/; SameSite=Lax; Max-Age=2592000`);
+    response.headers.set(
+      "Set-Cookie",
+      `token=${accessToken}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`,
+    );
+    response.headers.set(
+      "Set-Cookie",
+      `starred=${starred ? "true" : "false"}; Path=/; SameSite=Lax; Max-Age=2592000`,
+    );
 
     return response;
   } catch {
@@ -74,15 +80,12 @@ async function handleCallback(request: Request, env: Env): Promise<Response> {
 
 async function checkStar(env: Env, accessToken: string): Promise<boolean> {
   try {
-    const response = await fetch(
-      `https://api.github.com/repos/${env.OWNER}/${env.REPO}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          Accept: "application/vnd.github+json"
-        }
-      }
-    );
+    const response = await fetch(`https://api.github.com/repos/${env.OWNER}/${env.REPO}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/vnd.github+json",
+      },
+    });
 
     if (!response.ok) {
       return false;
@@ -109,14 +112,14 @@ async function handleStatus(request: Request, _env: Env): Promise<Response> {
   return Response.json({
     authenticated: true,
     hasLiked: starred,
-    token
+    token,
   });
 }
 
 function handleLogout(): Response {
   const response = new Response(null, {
     status: 302,
-    headers: { Location: "/" }
+    headers: { Location: "/" },
   });
 
   response.headers.set("Set-Cookie", "token=; Path=/; Max-Age=0");
@@ -128,19 +131,19 @@ function handleLogout(): Response {
 function redirectWithError(baseUrl: string, error: string): Response {
   return new Response(null, {
     status: 302,
-    headers: { Location: `/?auth=error&message=${encodeURIComponent(error)}` }
+    headers: { Location: `/?auth=error&message=${encodeURIComponent(error)}` },
   });
 }
 
 function parseCookies(header: string): Map<string, string> {
   const cookies = new Map<string, string>();
-  
+
   for (const cookie of header.split(";")) {
     const [name, ...rest] = cookie.trim().split("=");
     if (name) {
       cookies.set(name, rest.join("="));
     }
   }
-  
+
   return cookies;
 }

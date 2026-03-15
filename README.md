@@ -29,6 +29,7 @@
 ### Our Mission
 
 We believe that learning to code should be accessible to everyone. Our goal is to:
+
 - Lower the barrier to entry for aspiring developers
 - Provide hands-on practice with real code execution
 - Support multiple languages (English & Portuguese)
@@ -37,6 +38,7 @@ We believe that learning to code should be accessible to everyone. Our goal is t
 ### Why TypeScript?
 
 TypeScript is one of the most in-demand programming languages today, used by companies like Google, Microsoft, Airbnb, and many more. Learning TypeScript opens doors to:
+
 - Frontend development (React, Vue, Angular)
 - Backend development (Node.js, Deno)
 - Full-stack careers
@@ -59,7 +61,7 @@ TypeScript is one of the most in-demand programming languages today, used by com
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
@@ -139,11 +141,13 @@ We welcome contributions from the community! Here's how you can help:
 ### Contributing Guide
 
 1. **Fork the Repository**
+
    ```bash
    git fork https://github.com/rodrigooler/try-typescript
    ```
 
 2. **Create a Feature Branch**
+
    ```bash
    git checkout -b feature/amazing-feature
    ```
@@ -154,11 +158,13 @@ We welcome contributions from the community! Here's how you can help:
    - Ensure `npm run build` passes
 
 4. **Commit Your Changes**
+
    ```bash
    git commit -m "Add amazing new feature"
    ```
 
 5. **Push to GitHub**
+
    ```bash
    git push origin feature/amazing-feature
    ```
@@ -171,9 +177,11 @@ We welcome contributions from the community! Here's how you can help:
 
 ```markdown
 ## Description
+
 <!-- Briefly describe what this PR does -->
 
 ## Type of Change
+
 - [ ] 🐛 Bug fix
 - [ ] ✨ New feature
 - [ ] 📝 Documentation update
@@ -181,11 +189,13 @@ We welcome contributions from the community! Here's how you can help:
 - [ ] ♻️ Code refactor
 
 ## Testing
+
 <!-- Describe testing you performed -->
 
 ## Screenshots (if applicable)
 
 ## Checklist
+
 - [ ] My code follows the style guidelines
 - [ ] I have performed self-review
 - [ ] I have commented my code where necessary
@@ -217,9 +227,9 @@ npm run format
 
 ## Supported Languages
 
-| Language | Code | Status |
-|----------|------|--------|
-| English | `en` | ✅ Complete |
+| Language        | Code    | Status      |
+| --------------- | ------- | ----------- |
+| English         | `en`    | ✅ Complete |
 | Portuguese (BR) | `pt-BR` | ✅ Complete |
 
 Want to add a new language? See our [i18n guide](./docs/i18n.md) (coming soon).

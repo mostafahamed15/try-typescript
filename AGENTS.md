@@ -5,6 +5,7 @@
 **Try TypeScript** is an interactive platform for learning TypeScript. The project aims to help people enter the world of programming through hands-on, engaging TypeScript lessons.
 
 ### Core Features
+
 - 150 interactive lessons (Portuguese + English)
 - In-browser code execution
 - Monaco Editor with syntax highlighting
@@ -17,12 +18,14 @@
 ## Code Standards
 
 ### Language
+
 - **Code**: English
 - **Comments**: English
 - **UI Translations**: English and Portuguese (for lessons)
 - **Variable/Function Names**: English (camelCase)
 
 ### Tech Stack
+
 - TypeScript (strict mode)
 - React 19
 - Vite 8
@@ -59,11 +62,13 @@ npm run preview
 ## Best Practices
 
 ### Before Committing
+
 1. Run `npm run lint` - Must pass with 0 errors
 2. Run `npm run format` - Must pass with 0 errors
 3. Test the build with `npm run build`
 
 ### Code Style
+
 - Use oxlint for linting
 - Use oxfmt for formatting
 - Follow TypeScript strict mode
@@ -71,7 +76,9 @@ npm run preview
 - Add comments for complex logic
 
 ### Git Commits
+
 Use conventional commits:
+
 - `feat:` for new features
 - `fix:` for bug fixes
 - `docs:` for documentation
@@ -86,6 +93,7 @@ Use conventional commits:
 4. Test locally
 
 ### Lesson Structure
+
 ```typescript
 {
   id: number,           // Unique sequential ID
@@ -135,13 +143,16 @@ VITE_AUTH_WORKER_URL=your_cloudflare_worker_url
 ## Common Issues
 
 ### Monaco Editor not loading
+
 - Clear Vite cache: `rm -rf node_modules/.vite`
 - Restart dev server
 
 ### Build warnings about chunk size
+
 - Consider code splitting for Monaco Editor (future improvement)
 
 ### TypeScript errors
+
 - Ensure `tsc -b` passes before committing
 
 ---

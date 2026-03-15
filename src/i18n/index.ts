@@ -5,13 +5,13 @@ export type Locale = "en" | "pt-BR";
 
 export function getInitialLocale(): Locale {
   if (typeof window === "undefined") return "en";
-  
+
   const browserLang = navigator.language;
-  
+
   if (browserLang.startsWith("pt")) {
     return "pt-BR";
   }
-  
+
   return "en";
 }
 

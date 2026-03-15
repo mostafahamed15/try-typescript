@@ -6,7 +6,7 @@ export const en = {
   login: "Login",
   premium: "Premium",
   completeYourLogin: "Complete your login",
-  
+
   // Sidebar
   interactiveTutorial: "Interactive Tutorial",
   viewAll: "View All",
@@ -15,18 +15,18 @@ export const en = {
   hideHint: "Hide hint",
   previous: "Previous",
   next: "Next",
-  
+
   // Lesson List
   allLessons: "All Lessons",
   close: "Close",
   loginRequired: "Login and star the repository to access lessons",
-  
+
   // Editor
   mainTs: "main.ts",
   reset: "Reset",
   compileAndRun: "Compile & Run",
   loginRequiredToRun: "🔒 Login required",
-  
+
   // Console
   consoleOutput: "Console Output",
   clear: "Clear",
@@ -34,7 +34,7 @@ export const en = {
   codeExecutedNoOutput: "✅ Code executed with no output.",
   compiling: "Compiling...",
   codeReset: "Code reset. Ready to compile...",
-  
+
   // Auth Modal
   loginToTest: "Login to Test",
   likedThePlayground: "Liked the Playground?",
@@ -45,19 +45,19 @@ export const en = {
   alreadyStarred: "Already starred? Click here to verify",
   accessWillBeUnlocked: "Access will be unlocked instantly",
   maybeLater: "Maybe later",
-  
+
   // Status Bar
   typescriptEngine: "TypeScript 5.3 Engine",
   authenticated: "Authenticated",
   guest: "Guest",
   documentation: "Documentation",
   feedback: "Feedback",
-  
+
   // Level Labels
   basic: "Basic",
   medium: "Medium",
   advanced: "Advanced",
-  
+
   // Footer
   inspiredByRubyLang: "Inspired by Ruby-Lang",
   madeWithTypeScript: "Made with TypeScript",

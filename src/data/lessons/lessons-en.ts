@@ -2400,8 +2400,7 @@ console.log("All approaches work!")`,
     title: "Type-safe CSV Parser",
     level: "advanced",
     content:
-      "Create a CSV parser that infers column types. " +
-      "Use generics to map headers to types.",
+      "Create a CSV parser that infers column types. " + "Use generics to map headers to types.",
     task: "Parse CSV and infer column types.",
     hint: "function parseCSV<T>(csv: string): T[]",
     starterCode: `interface User {
@@ -3955,8 +3954,7 @@ console.log("New user:", newUser)`,
     title: "&& and || Operators",
     level: "medium",
     content:
-      "Logical operators work like in JavaScript. " +
-      "Learn to use them with conditional types.",
+      "Logical operators work like in JavaScript. " + "Learn to use them with conditional types.",
     task: "Use logical operators in expressions.",
     hint: "const result = a && b || c",
     starterCode: `const a = true
@@ -4277,8 +4275,7 @@ console.log("Index:", userIndex)`,
     title: "Array Methods - some and every",
     level: "medium",
     content:
-      "some returns true if any element passes the test. " +
-      "every returns true if all pass.",
+      "some returns true if any element passes the test. " + "every returns true if all pass.",
     task: "Check conditions in arrays.",
     hint: "const hasEvens = arr.some(n => n % 2 === 0)",
     starterCode: `const numbers = [1, 3, 5, 7, 9]
@@ -4345,8 +4342,7 @@ console.log("Unique:", unique([1, 2, 2, 3, 3, 3]))`,
     title: "Array Methods - sort",
     level: "medium",
     content:
-      "sort sorts elements in place. " +
-      "For correct sorting, provide a comparator function.",
+      "sort sorts elements in place. " + "For correct sorting, provide a comparator function.",
     task: "Sort an array of numbers.",
     hint: "const sorted = arr.sort((a, b) => a - b)",
     starterCode: `const numbers = [5, 2, 8, 1, 9]
@@ -4694,8 +4690,7 @@ const intervalId = setInterval(() => {
     title: "Object.keys, values, entries",
     level: "medium",
     content:
-      "Object.keys returns keys, values returns values, " +
-      "entries returns [key, value] pairs.",
+      "Object.keys returns keys, values returns values, " + "entries returns [key, value] pairs.",
     task: "Iterate over object properties.",
     hint: "Object.keys(obj)",
     starterCode: `const user = {
@@ -4958,7 +4953,8 @@ showArgs(1, "hello", true)`,
     id: 137,
     title: "IIFE - Immediately Invoked Function",
     level: "medium",
-    content: "IIFE is a function that executes immediately. " + "Useful for creating private scope.",
+    content:
+      "IIFE is a function that executes immediately. " + "Useful for creating private scope.",
     task: "Create an IIFE.",
     hint: "(() => { })()",
     starterCode: `(function() {
@@ -5030,8 +5026,7 @@ withCallback("Alice", (err, result) => {
     id: 139,
     title: "for...in and for...of",
     level: "medium",
-    content:
-      "for...in iterates over object keys. " + "for...of iterates over values of iterables.",
+    content: "for...in iterates over object keys. " + "for...of iterates over values of iterables.",
     task: "Iterate over objects and arrays.",
     hint: "for...of for arrays",
     starterCode: `const user = { name: "Alice", age: 25, city: "SP" }
@@ -5057,9 +5052,7 @@ for (const [index, num] of numbers.entries()) {
     id: 140,
     title: "while and do...while",
     level: "medium",
-    content:
-      "while executes while the condition is true. " +
-      "do...while executes at least once.",
+    content: "while executes while the condition is true. " + "do...while executes at least once.",
     task: "Use while loops.",
     hint: "while (condition) { }",
     starterCode: `let count = 0
@@ -5248,7 +5241,8 @@ console.log(hasProp(car, "year"))`,
     id: 146,
     title: "delete operator",
     level: "medium",
-    content: "delete removes properties from objects. " + "Does not work on variables or functions.",
+    content:
+      "delete removes properties from objects. " + "Does not work on variables or functions.",
     task: "Remove properties from objects.",
     hint: "delete object.property",
     starterCode: `const user = { name: "Alice", age: 25, city: "SP" }
