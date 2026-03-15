@@ -5,26 +5,19 @@ import {
   Code2,
   BookOpen,
   Github,
-  Heart,
   Play,
   ChevronRight,
   ChevronLeft,
-  Lock,
-  User,
   Loader2,
   Lightbulb,
   CheckCircle2,
   List,
-  LogOut,
 } from "lucide-react";
 
 const Editor = lazy(() => import("@monaco-editor/react"));
 
 import { getLessonsByLocale, type Lesson, type Level } from "./data/lessons";
 import { getInitialLocale, t, type Locale } from "./i18n";
-
-const AUTH_WORKER_URL = import.meta.env.VITE_AUTH_WORKER_URL || "https://api.try-typescript.com";
-const GITHUB_CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID || "";
 
 function stripTypeAnnotations(code: string): string {
   let js = code;
@@ -119,7 +112,6 @@ function LessonListModal({
   completedIds,
   onSelect,
   onClose,
-  blocked,
   lessons,
   locale,
 }: {
@@ -127,7 +119,6 @@ function LessonListModal({
   completedIds: Set<number>;
   onSelect: (lesson: Lesson) => void;
   onClose: () => void;
-  blocked: boolean;
   lessons: Lesson[];
   locale: Locale;
 }) {
@@ -138,7 +129,6 @@ function LessonListModal({
   ];
 
   const handleSelect = (lesson: Lesson) => {
-    if (blocked) return;
     onSelect(lesson);
     onClose();
   };
@@ -152,13 +142,6 @@ function LessonListModal({
             ✕ Fechar
           </button>
         </div>
-        {blocked && (
-          <div className="px-6 py-3 bg-yellow-500/10 border-b border-yellow-500/30">
-            <p className="text-yellow-400 text-sm">
-              🔒 Faça login e curta o repositório para acessar as lições
-            </p>
-          </div>
-        )}
         <div className="p-4 max-h-[60vh] overflow-y-auto space-y-4">
           {groups.map(({ level, label }) => (
             <div key={level}>
@@ -175,9 +158,7 @@ function LessonListModal({
                       className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${
                         lesson.id === currentLesson.id
                           ? "bg-[#3178c6]/20 border border-[#3178c6]/40 text-white"
-                          : blocked
-                            ? "opacity-50 cursor-not-allowed text-slate-500"
-                            : "hover:bg-slate-700/50 text-slate-300"
+                          : "hover:bg-slate-700/50 text-slate-300"
                       }`}
                     >
                       <span className="text-xs text-slate-500 w-5 text-right shrink-0">
@@ -198,89 +179,8 @@ function LessonListModal({
   );
 }
 
-function AuthModal({
-  isLoggedIn,
-  hasLiked,
-  onLogin,
-  onLike,
-  onClose,
-  locale,
-}: {
-  isLoggedIn: boolean;
-  hasLiked: boolean;
-  onLogin: () => void;
-  onLike: () => void;
-  onClose: () => void;
-  locale: Locale;
-}) {
-  return (
-    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-[#1e293b] border border-slate-700 w-full max-w-md rounded-2xl shadow-2xl overflow-hidden">
-        <div className="p-8">
-          <div className="w-16 h-16 bg-[#3178c6]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            {isLoggedIn ? (
-              <Heart
-                className={`text-pink-500 ${!hasLiked && "animate-bounce"}`}
-                size={32}
-                fill={hasLiked ? "currentColor" : "none"}
-              />
-            ) : (
-              <Lock className="text-[#3178c6]" size={32} />
-            )}
-          </div>
-
-          <h3 className="text-2xl font-bold text-center text-white mb-2">
-            {!isLoggedIn ? t("loginToTest", locale) : t("likedThePlayground", locale)}
-          </h3>
-          <p className="text-center text-slate-400 text-sm mb-8">
-            {!isLoggedIn ? t("loginDescription", locale) : t("likedDescription", locale)}
-          </p>
-
-          <div className="space-y-4">
-            {!isLoggedIn ? (
-              <button
-                onClick={onLogin}
-                className="w-full flex items-center justify-center space-x-3 bg-white text-slate-900 font-bold py-3 rounded-xl hover:bg-slate-100 transition-all shadow-lg"
-              >
-                <Github size={20} />
-                <span>{t("enterWithGitHub", locale)}</span>
-              </button>
-            ) : (
-              <div className="space-y-3">
-                <a
-                  href="https://github.com/rodrigooler/try-typescript"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center space-x-3 bg-pink-500 text-white font-bold py-3 rounded-xl hover:bg-pink-600 transition-all shadow-lg"
-                >
-                  <Heart size={20} fill="currentColor" />
-                  <span>{t("starRepository", locale)}</span>
-                </a>
-                <button
-                  onClick={onLike}
-                  className="w-full text-center text-xs text-slate-500 hover:text-slate-300 transition-colors"
-                >
-                  {t("alreadyStarred", locale)}
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="bg-slate-900/50 p-4 flex items-center justify-center border-t border-slate-800">
-          <button onClick={onClose} className="text-xs text-slate-500 hover:text-slate-300">
-            {t("maybeLater", locale)}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function App() {
   const [locale, setLocale] = useState<Locale>(getInitialLocale);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [hasLiked, setHasLiked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const allLessons = getLessonsByLocale(locale);
@@ -288,33 +188,11 @@ export default function App() {
   const [code, setCode] = useState(allLessons[0].starterCode);
   const [output, setOutput] = useState<string[]>([t("readyToCompile", locale)]);
   const [isCompiling, setIsCompiling] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
   const [showLessonList, setShowLessonList] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [completedIds, setCompletedIds] = useState<Set<number>>(new Set());
 
   const currentIndex = allLessons.findIndex((l) => l.id === currentLesson.id);
-
-  const isBlocked = !isLoggedIn || !hasLiked;
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const auth = urlParams.get("auth");
-
-    if (auth === "success") {
-      setIsLoggedIn(true);
-      setHasLiked(true);
-      window.history.replaceState({}, "", "/");
-    } else if (auth === "likerequired") {
-      setIsLoggedIn(true);
-      setHasLiked(false);
-      window.history.replaceState({}, "", "/");
-    } else if (auth === "error") {
-      window.history.replaceState({}, "", "/");
-    }
-
-    fetchAuthStatus();
-  }, []);
 
   useEffect(() => {
     const newLessons = getLessonsByLocale(locale);
@@ -326,55 +204,8 @@ export default function App() {
       setCurrentLesson(newLessons[0]);
       setCode(newLessons[0].starterCode);
     }
+    setIsLoading(false);
   }, [locale]);
-
-  const fetchAuthStatus = async () => {
-    try {
-      const res = await fetch(`${AUTH_WORKER_URL}/auth/status`, {
-        credentials: "include",
-      });
-      const data = await res.json();
-      setIsLoggedIn(data.authenticated);
-      setHasLiked(data.hasLiked);
-    } catch {
-      setIsLoggedIn(false);
-      setHasLiked(false);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleLogin = () => {
-    const redirectUri = `${window.location.origin}/auth/callback`;
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=read:user`;
-  };
-
-  const handleCheckLike = async () => {
-    try {
-      const res = await fetch(`${AUTH_WORKER_URL}/auth/status`, {
-        credentials: "include",
-      });
-      const data = await res.json();
-      if (data.authenticated) {
-        setHasLiked(data.hasLiked);
-        if (data.hasLiked) {
-          setShowAuthModal(false);
-        }
-      }
-    } catch {
-      console.error("Failed to check status");
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await fetch(`${AUTH_WORKER_URL}/auth/logout`, {
-        credentials: "include",
-      });
-    } catch {}
-    setIsLoggedIn(false);
-    setHasLiked(false);
-  };
 
   const goToLesson = useCallback(
     (lesson: Lesson) => {
@@ -387,11 +218,6 @@ export default function App() {
   );
 
   const handleNavigate = (direction: "prev" | "next") => {
-    if (isBlocked) {
-      setShowAuthModal(true);
-      return;
-    }
-
     if (direction === "prev" && currentIndex > 0) {
       goToLesson(allLessons[currentIndex - 1]);
     } else if (direction === "next" && currentIndex < allLessons.length - 1) {
@@ -409,11 +235,6 @@ export default function App() {
   }, []);
 
   const handleRunCode = () => {
-    if (isBlocked) {
-      setShowAuthModal(true);
-      return;
-    }
-
     setIsCompiling(true);
     setOutput([]);
 
@@ -493,37 +314,6 @@ export default function App() {
             <span className="font-medium">{locale === "en" ? "🇺🇸" : "🇧🇷"}</span>
             <span className="uppercase text-[10px]">{locale === "en" ? "EN" : "PT"}</span>
           </button>
-
-          {isLoggedIn ? (
-            <div className="flex items-center gap-2">
-              {hasLiked ? (
-                <div className="flex items-center space-x-2 bg-emerald-500/20 border border-emerald-500/30 px-3 py-1 rounded-full">
-                  <Heart size={14} className="text-pink-500" fill="currentColor" />
-                  <span className="text-xs font-medium">Premium</span>
-                </div>
-              ) : (
-                <button
-                  onClick={() => setShowAuthModal(true)}
-                  className="bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 px-3 py-1 rounded-full text-xs font-medium"
-                >
-                  Complete seu login
-                </button>
-              )}
-              <button
-                onClick={handleLogout}
-                className="text-slate-400 hover:text-white transition-colors p-1"
-              >
-                <LogOut size={16} />
-              </button>
-            </div>
-          ) : (
-            <button
-              onClick={() => setShowAuthModal(true)}
-              className="bg-[#3178c6] hover:bg-[#2762a5] text-white px-4 py-1.5 rounded-full text-sm font-medium transition-all shadow-md"
-            >
-              Entrar
-            </button>
-          )}
         </div>
       </header>
 
@@ -592,11 +382,7 @@ export default function App() {
               <button
                 onClick={() => handleNavigate("next")}
                 disabled={currentIndex === allLessons.length - 1}
-                className={`flex items-center space-x-1 font-medium transition-colors ${
-                  isBlocked
-                    ? "text-yellow-400 cursor-pointer"
-                    : "text-[#3178c6] hover:text-blue-400"
-                } disabled:opacity-30`}
+                className="flex items-center space-x-1 font-medium text-[#3178c6] hover:text-blue-400 disabled:opacity-30 transition-colors"
               >
                 <span>Próximo</span>
                 <ChevronRight size={20} />
@@ -660,11 +446,9 @@ export default function App() {
             <button
               onClick={handleRunCode}
               disabled={isCompiling}
-              className={`absolute bottom-6 right-6 flex items-center space-x-2 px-6 py-2.5 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 z-20 ${
-                isBlocked
-                  ? "bg-yellow-500 hover:bg-yellow-600 text-white"
-                  : "bg-emerald-500 hover:bg-emerald-600 text-white"
-              } ${isCompiling ? "opacity-60" : ""}`}
+              className={`absolute bottom-6 right-6 flex items-center space-x-2 px-6 py-2.5 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 z-20 bg-emerald-500 hover:bg-emerald-600 text-white ${
+                isCompiling ? "opacity-60" : ""
+              }`}
             >
               {isCompiling ? (
                 <Loader2 size={20} className="animate-spin" />
@@ -672,7 +456,7 @@ export default function App() {
                 <Play size={20} fill="currentColor" />
               )}
               <span className="font-bold uppercase tracking-wider text-xs">
-                {isBlocked ? "🔒 Login necessário" : "Compilar & Executar"}
+                Compilar & Executar
               </span>
             </button>
           </div>
@@ -716,24 +500,12 @@ export default function App() {
           </div>
         </div>
 
-        {showAuthModal && (
-          <AuthModal
-            isLoggedIn={isLoggedIn}
-            hasLiked={hasLiked}
-            onLogin={handleLogin}
-            onLike={handleCheckLike}
-            onClose={() => setShowAuthModal(false)}
-            locale={locale}
-          />
-        )}
-
         {showLessonList && (
           <LessonListModal
             currentLesson={currentLesson}
             completedIds={completedIds}
             onSelect={goToLesson}
             onClose={() => setShowLessonList(false)}
-            blocked={isBlocked}
             lessons={allLessons}
             locale={locale}
           />
@@ -745,10 +517,6 @@ export default function App() {
           <div className="flex items-center space-x-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
             <span>TypeScript 5.3 Engine</span>
-          </div>
-          <div className="flex items-center space-x-1.5">
-            <User size={10} />
-            <span>{isLoggedIn ? (hasLiked ? "Premium" : "Autenticado") : "Convidado"}</span>
           </div>
         </div>
         <div className="flex items-center space-x-4">
