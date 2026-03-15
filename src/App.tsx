@@ -23,8 +23,8 @@ const Editor = lazy(() => import("@monaco-editor/react"));
 import { getLessonsByLocale, type Lesson, type Level } from "./data/lessons";
 import { getInitialLocale, t, type Locale } from "./i18n";
 
-const AUTH_WORKER_URL = "https://try-typescript-auth.your-user.workers.dev";
-const GITHUB_CLIENT_ID = "seu_client_id_aqui";
+const AUTH_WORKER_URL = import.meta.env.VITE_AUTH_WORKER_URL || "https://api.try-typescript.com";
+const GITHUB_CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID || "";
 
 function stripTypeAnnotations(code: string): string {
   let js = code;

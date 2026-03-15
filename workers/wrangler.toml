@@ -5,6 +5,8 @@ compatibility_date = "2024-01-01"
 [vars]
 OWNER = "rodrigooler"
 REPO = "try-typescript"
-FRONTEND_URL = "http://localhost:5173"
+FRONTEND_URL = "https://try-typescript.com"
+
+routes = [{ pattern = "api.try-typescript.com", zone_name = "try-typescript.com" }]
 
 [secrets]
