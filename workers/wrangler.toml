@@ -3,10 +3,10 @@ main = "oauth.ts"
 compatibility_date = "2024-01-01"
 
 [vars]
-OWNER = "seu-username"
+OWNER = "rodrigooler"
 REPO = "try-typescript"
 FRONTEND_URL = "http://localhost:5173"
 
 [secrets]
-
-GITHUB_CLIENT_SECRETGITHUB_CLIENT_ID = 
+GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET
