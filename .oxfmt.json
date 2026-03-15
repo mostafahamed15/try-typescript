@@ -1,0 +1,9 @@
+{
+  "indentStyle": "space",
+  "indentWidth": 2,
+  "lineEnding": "lf",
+  "maxWidth": 80,
+  "semi": false,
+  "trailingComma": "none",
+  "arrowParens": "avoid"
+}
