@@ -47,5 +47,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: try-typescript
           directory: dist
-          # Enable preview deployments for PRs
-          ${{ github.event_name == 'pull_request' && 'branch: preview' || '' }}
