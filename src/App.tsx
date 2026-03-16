@@ -236,7 +236,9 @@ export default function App() {
     setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
 
     const hasError = results.some((r) => r.startsWith("❌"));
-    if (!hasError && !completedIds.has(currentLesson.id)) {
+    const isValid = currentLesson.validation ? currentLesson.validation(code, results) : !hasError;
+
+    if (isValid && !completedIds.has(currentLesson.id)) {
       setCompletedIds((prev) => new Set(prev).add(currentLesson.id));
       celebrateCompletion();
     }
@@ -263,7 +265,8 @@ export default function App() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setShowLessonList(!showLessonList)}
-            className="md:hidden p-2 hover:bg-slate-700 rounded-lg transition-colors"
+            className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
+            title="Todas as lições"
           >
             <List size={24} />
           </button>

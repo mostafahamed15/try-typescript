@@ -8,4 +8,5 @@ export interface Lesson {
   task: string;
   hint: string;
   starterCode: string;
+  validation?: (code: string, output: string[]) => boolean;
 }

@@ -1,14 +1,6 @@
-export type Level = "basic" | "medium" | "advanced";
+import type { Lesson } from "./types";
+export type { Level, Lesson } from "./types";
 
-export interface Lesson {
-  id: number;
-  title: string;
-  level: Level;
-  content: string;
-  task: string;
-  hint: string;
-  starterCode: string;
-}
 export const lessons: Lesson[] = [
   {
     id: 1,
@@ -19,7 +11,7 @@ export const lessons: Lesson[] = [
       'Com ele, você define o "formato" dos seus dados usando interfaces, evitando ' +
       "erros em tempo de execução. Veja o exemplo: criamos uma interface `User` com " +
       "dois campos tipados e instanciamos um objeto que a respeita.",
-    task: "Tente alterar o nome do usuário no editor e clique em Compilar & Executar.",
+    task: "Altere o nome do usuário de 'TypeScript Explorer' para outro nome qualquer.",
     hint: "Mude o valor de `name` dentro do objeto `user`.",
     starterCode: `interface User {
   name: string;
@@ -32,6 +24,9 @@ const user: User = {
 };
 
 console.log(\`Olá, \${user.name}! Seu ID é \${user.id}.\`);`,
+    validation: (code: string) =>
+      !code.includes('name: "TypeScript Explorer"') &&
+      !code.includes("name: 'TypeScript Explorer'"),
   },
   {
     id: 2,
