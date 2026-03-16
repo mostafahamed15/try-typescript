@@ -1,5 +1,7 @@
 export type Level = "basic" | "medium" | "advanced";
 
+export type ValidationFn = (code: string, output: string[]) => boolean;
+
 export interface Lesson {
   id: number;
   title: string;
@@ -8,5 +10,5 @@ export interface Lesson {
   task: string;
   hint: string;
   starterCode: string;
-  validation?: (code: string, output: string[]) => boolean;
+  validation?: ValidationFn;
 }
