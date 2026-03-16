@@ -236,9 +236,17 @@ export default function App() {
     setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
 
     const hasError = results.some((r) => r.startsWith("❌"));
-    const isValid = currentLesson.validation ? currentLesson.validation(code, results) : !hasError;
 
-    if (isValid && !completedIds.has(currentLesson.id)) {
+    const isValid = (): boolean => {
+      if (hasError) return false;
+      if (code.trim() === currentLesson.starterCode.trim()) return false;
+      if (currentLesson.validation) {
+        return currentLesson.validation(code, results);
+      }
+      return results.length > 0;
+    };
+
+    if (isValid() && !completedIds.has(currentLesson.id)) {
       setCompletedIds((prev) => new Set(prev).add(currentLesson.id));
       celebrateCompletion();
     }
