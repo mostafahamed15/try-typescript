@@ -16,7 +16,7 @@ import {
 
 const Editor = lazy(() => import("@monaco-editor/react"));
 
-import { getLessonsByLocale, type Lesson, type Level } from "./data/lessons";
+import { getLessonsByLocale, createValidation, type Lesson, type Level } from "./data/lessons";
 import { getInitialLocale, t, type Locale } from "./i18n";
 
 async function transpileCode(code: string): Promise<string> {
@@ -235,23 +235,10 @@ export default function App() {
     const results = await executeCode(code);
     setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
 
-    const hasError = results.some((r) => r.startsWith("❌"));
-    const taskLower = currentLesson.task.toLowerCase();
-    const requiresChange = !taskLower.startsWith("observe") && !taskLower.startsWith("tente") && !taskLower.includes("observe como");
-    
-    const isValid = (): boolean => {
-      if (hasError) return false;
-      if (currentLesson.validation) {
-        const validationResult = currentLesson.validation(code, results);
-        if (!validationResult) return false;
-      } else if (requiresChange) {
-        if (code.trim() === currentLesson.starterCode.trim()) return false;
-        if (results.length === 0) return false;
-      }
-      return true;
-    };
+    const validationFn = currentLesson.validation || createValidation(currentLesson.task);
+    const isValid = validationFn(code, results, currentLesson.starterCode);
 
-    if (isValid() && !completedIds.has(currentLesson.id)) {
+    if (isValid && !completedIds.has(currentLesson.id)) {
       setCompletedIds((prev) => new Set(prev).add(currentLesson.id));
       celebrateCompletion();
     }
