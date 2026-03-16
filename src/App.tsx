@@ -71,32 +71,28 @@ async function executeCode(code: string): Promise<string[]> {
   return logs;
 }
 
-const levelConfig: Record<Level, { label: string; color: string; dot: string }> = {
-  basic: {
-    label: "Básico",
-    color: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
-    dot: "bg-emerald-400",
-  },
-  medium: {
-    label: "Médio",
-    color: "text-yellow-400 bg-yellow-400/10 border-yellow-400/30",
-    dot: "bg-yellow-400",
-  },
-  advanced: {
-    label: "Avançado",
-    color: "text-red-400 bg-red-400/10 border-red-400/30",
-    dot: "bg-red-400",
-  },
-};
-
-function LevelBadge({ level }: { level: Level }) {
-  const cfg = levelConfig[level];
+function LevelBadge({ level, locale }: { level: Level; locale: Locale }) {
+  const labels: Record<Level, string> = {
+    basic: t("basic", locale),
+    medium: t("medium", locale),
+    advanced: t("advanced", locale),
+  };
+  const colors: Record<Level, string> = {
+    basic: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
+    medium: "text-yellow-400 bg-yellow-400/10 border-yellow-400/30",
+    advanced: "text-red-400 bg-red-400/10 border-red-400/30",
+  };
+  const dots: Record<Level, string> = {
+    basic: "bg-emerald-400",
+    medium: "bg-yellow-400",
+    advanced: "bg-red-400",
+  };
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold border ${cfg.color}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold border ${colors[level]}`}
     >
-      <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-      {cfg.label}
+      <span className={`w-1.5 h-1.5 rounded-full ${dots[level]}`} />
+      {labels[level]}
     </span>
   );
 }
@@ -117,9 +113,9 @@ function LessonListModal({
   locale: Locale;
 }) {
   const groups: { level: Level; label: string }[] = [
-    { level: "basic", label: locale === "pt-BR" ? "🟢 Básico" : "🟢 Basic" },
-    { level: "medium", label: locale === "pt-BR" ? "🟡 Médio" : "🟡 Medium" },
-    { level: "advanced", label: locale === "pt-BR" ? "🔴 Avançado" : "🔴 Advanced" },
+    { level: "basic", label: `🟢 ${t("basic", locale)}` },
+    { level: "medium", label: `🟡 ${t("medium", locale)}` },
+    { level: "advanced", label: `🔴 ${t("advanced", locale)}` },
   ];
 
   const handleSelect = (lesson: Lesson) => {
@@ -131,9 +127,9 @@ function LessonListModal({
     <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-[#1e293b] border border-slate-700 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden">
         <div className="flex items-center justify-between p-6 border-b border-slate-700">
-          <h3 className="text-lg font-bold text-white">Todas as Lições</h3>
+          <h3 className="text-lg font-bold text-white">{t("allLessons", locale)}</h3>
           <button onClick={onClose} className="text-slate-400 hover:text-white text-sm">
-            ✕ Fechar
+            ✕ {t("close", locale)}
           </button>
         </div>
         <div className="p-4 max-h-[60vh] overflow-y-auto space-y-4">
@@ -275,7 +271,7 @@ export default function App() {
             <Code2 size={24} className="text-white" />
           </div>
           <h1 className="text-lg font-bold tracking-tight text-white">
-            Try <span className="text-[#3178c6]">{t("tryTypescript", locale)}</span>
+            {t("tryTypescript", locale)}
           </h1>
         </div>
 
@@ -335,7 +331,7 @@ export default function App() {
               <span className="text-xs text-slate-500 font-mono">
                 {String(currentIndex + 1).padStart(2, "0")}/{allLessons.length}
               </span>
-              <LevelBadge level={currentLesson.level} />
+              <LevelBadge level={currentLesson.level} locale={locale} />
             </div>
 
             <h2 className="text-xl font-bold text-white mb-4">{currentLesson.title}</h2>
@@ -344,7 +340,7 @@ export default function App() {
 
             <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-4 mb-4">
               <h3 className="text-xs font-semibold text-slate-300 uppercase mb-2">
-                🎯 Sua Missão:
+                🎯 {t("yourMission", locale)}:
               </h3>
               <p className="text-sm text-slate-200">{currentLesson.task}</p>
             </div>
@@ -355,7 +351,7 @@ export default function App() {
                 className="flex items-center gap-2 text-xs text-yellow-400/70 hover:text-yellow-400 transition-colors"
               >
                 <Lightbulb size={13} />
-                <span>{showHint ? "Ocultar dica" : "Mostrar dica"}</span>
+                <span>{showHint ? t("hideHint", locale) : t("showHint", locale)}</span>
               </button>
               {showHint && (
                 <div className="mt-2 bg-yellow-400/5 border border-yellow-400/20 rounded-lg p-3">
@@ -373,14 +369,14 @@ export default function App() {
                 className="flex items-center space-x-1 text-slate-500 hover:text-white disabled:opacity-30 transition-colors"
               >
                 <ChevronLeft size={20} />
-                <span>Anterior</span>
+                <span>{t("previous", locale)}</span>
               </button>
               <button
                 onClick={() => handleNavigate("next")}
                 disabled={currentIndex === allLessons.length - 1}
                 className="flex items-center space-x-1 font-medium text-[#3178c6] hover:text-blue-400 disabled:opacity-30 transition-colors"
               >
-                <span>Próximo</span>
+                <span>{t("next", locale)}</span>
                 <ChevronRight size={20} />
               </button>
             </div>
@@ -452,7 +448,7 @@ export default function App() {
                 <Play size={20} fill="currentColor" />
               )}
               <span className="font-bold uppercase tracking-wider text-xs">
-                Compilar & Executar
+                {t("compileAndRun", locale)}
               </span>
             </button>
           </div>
@@ -462,14 +458,14 @@ export default function App() {
               <div className="flex items-center space-x-2 text-slate-500">
                 <Terminal size={14} />
                 <span className="text-[10px] font-bold uppercase tracking-widest">
-                  Console Output
+                  {t("consoleOutput", locale)}
                 </span>
               </div>
               <button
                 onClick={() => setOutput([])}
                 className="text-[10px] text-slate-500 hover:text-slate-300 underline"
               >
-                Limpar
+                {t("clear", locale)}
               </button>
             </div>
             <div className="flex-1 overflow-y-auto p-4 font-mono text-sm text-slate-400 space-y-1">
@@ -490,7 +486,7 @@ export default function App() {
                 </div>
               ))}
               {isCompiling && (
-                <div className="text-blue-400 animate-pulse font-bold">Compilando...</div>
+                <div className="text-blue-400 animate-pulse font-bold">{t("compiling", locale)}</div>
               )}
             </div>
           </div>
@@ -512,7 +508,7 @@ export default function App() {
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span>TypeScript 5.3 Engine</span>
+            <span>{t("typescriptEngine", locale)}</span>
           </div>
         </div>
         <div className="flex items-center space-x-4">
@@ -522,7 +518,7 @@ export default function App() {
             rel="noopener noreferrer"
             className="hover:text-white cursor-pointer transition-colors"
           >
-            Documentação
+            {t("documentation", locale)}
           </a>
           <a
             href="https://github.com/rodrigooler/try-typescript/issues"
@@ -530,7 +526,7 @@ export default function App() {
             rel="noopener noreferrer"
             className="hover:text-white cursor-pointer transition-colors"
           >
-            Feedback
+            {t("feedback", locale)}
           </a>
         </div>
       </footer>
