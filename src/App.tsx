@@ -236,10 +236,12 @@ export default function App() {
     setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
 
     const hasError = results.some((r) => r.startsWith("❌"));
-
+    const taskLower = currentLesson.task.toLowerCase();
+    const requiresChange = !taskLower.startsWith("observe") && !taskLower.startsWith("tente") && !taskLower.includes("observe como");
+    
     const isValid = (): boolean => {
       if (hasError) return false;
-      if (code.trim() === currentLesson.starterCode.trim()) return false;
+      if (requiresChange && code.trim() === currentLesson.starterCode.trim()) return false;
       if (currentLesson.validation) {
         return currentLesson.validation(code, results);
       }
