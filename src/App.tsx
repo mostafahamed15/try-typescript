@@ -20,7 +20,8 @@ import { getLessonsByLocale, createValidation, type Lesson, type Level } from ".
 import { getInitialLocale, t, type Locale } from "./i18n";
 
 async function transpileCode(code: string): Promise<string> {
-  const ts = await import("typescript");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ts: any = await import("https://unpkg.com/typescript@5.3.3/lib/typescript.min.js");
   const result = ts.transpileModule(code, {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ESNext },
   });
