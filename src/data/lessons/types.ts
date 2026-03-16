@@ -13,7 +13,7 @@ export interface Lesson {
   validation?: ValidationFn;
 }
 
-export function createValidation(task: string): ValidationFn {
+export function createValidation(task: string, starterCode: string): ValidationFn {
   const taskLower = task.toLowerCase();
 
   if (
@@ -57,6 +57,7 @@ export function createValidation(task: string): ValidationFn {
     const [, name] = createValueMatch;
     return (code: string, output: string[]) => {
       if (output.some((o) => o.startsWith("❌"))) return false;
+      if (code.trim() === starterCode.trim()) return false;
       const hasDefinition =
         code.includes(name) || code.includes(`"${name}"`) || code.includes(`'${name}'`);
       return hasDefinition && output.length > 0;
@@ -68,14 +69,45 @@ export function createValidation(task: string): ValidationFn {
     const [, name] = addMatch;
     return (code: string, output: string[]) => {
       if (output.some((o) => o.startsWith("❌"))) return false;
+      if (code.trim() === starterCode.trim()) return false;
       const hasAddition = code.includes(name);
       return hasAddition && output.length > 0;
     };
   }
 
-  return (code: string, output: string[], starterCode: string) => {
+  const tornOptionalMatch = task.match(/Torne\s+(?:o\s+)?parâmetro\s+(\w+)\s+opcional/i);
+  if (tornOptionalMatch) {
+    const [, param] = tornOptionalMatch;
+    return (code: string, output: string[]) => {
+      if (output.some((o) => o.startsWith("❌"))) return false;
+      if (code.trim() === starterCode.trim()) return false;
+      return code.includes(`${param}?`) && output.length > 0;
+    };
+  }
+
+  const useMatch = task.match(
+    /Use\s+(?:type\s+assertion|assertion|optional\s+chaining|non-null\s+assertion)/i,
+  );
+  if (useMatch) {
+    return (code: string, output: string[]) => {
+      if (output.some((o) => o.startsWith("❌"))) return false;
+      if (code.trim() === starterCode.trim()) return false;
+      return output.length > 0;
+    };
+  }
+
+  const tupleMatch = task.match(/Crie\s+(?:um[ao]?\s+)?tupla/i);
+  if (tupleMatch) {
+    return (code: string, output: string[]) => {
+      if (output.some((o) => o.startsWith("❌"))) return false;
+      if (code.trim() === starterCode.trim()) return false;
+      return output.length > 0;
+    };
+  }
+
+  return (code: string, output: string[], starterCodeParam: string) => {
     if (output.some((o) => o.startsWith("❌"))) return false;
-    if (code.trim() === starterCode.trim()) return false;
+    if (code.trim() === starterCodeParam.trim()) return false;
     return output.length > 0;
   };
 }

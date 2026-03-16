@@ -235,7 +235,8 @@ export default function App() {
     const results = await executeCode(code);
     setOutput(results.length > 0 ? results : [t("codeExecutedNoOutput", locale)]);
 
-    const validationFn = currentLesson.validation || createValidation(currentLesson.task);
+    const validationFn =
+      currentLesson.validation || createValidation(currentLesson.task, currentLesson.starterCode);
     const isValid = validationFn(code, results, currentLesson.starterCode);
 
     if (isValid && !completedIds.has(currentLesson.id)) {
