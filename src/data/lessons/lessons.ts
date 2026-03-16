@@ -24,9 +24,6 @@ const user: User = {
 };
 
 console.log(\`Olá, \${user.name}! Seu ID é \${user.id}.\`);`,
-    validation: (code: string) =>
-      !code.includes('name: "TypeScript Explorer"') &&
-      !code.includes("name: 'TypeScript Explorer'"),
   },
   {
     id: 2,

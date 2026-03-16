@@ -24,6 +24,19 @@ export function createValidation(task: string): ValidationFn {
     return () => true;
   }
 
+  const alterFromMatch = task.match(
+    /Altere\s+(?:o\s+)?nome\s+de\s+['"]?([^'"]+)['"]?\s+para\s+outro\s+qualquer/i,
+  );
+  if (alterFromMatch) {
+    const [, oldValue] = alterFromMatch;
+    return (code: string, output: string[]) => {
+      if (output.some((o) => o.startsWith("❌"))) return false;
+      const codeChanged = !code.includes(oldValue);
+      const hasOutput = output.length > 0 && !output[0].includes("TypeScript Explorer");
+      return codeChanged && hasOutput;
+    };
+  }
+
   const alterMatch = task.match(
     /Altere\s+(?:o\s+)?(?:valor\s+de\s+)?`?(\w+)`?\s+para\s+['"]?([^'"]+)['"]?/i,
   );
