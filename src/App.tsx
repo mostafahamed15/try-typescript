@@ -241,11 +241,14 @@ export default function App() {
     
     const isValid = (): boolean => {
       if (hasError) return false;
-      if (requiresChange && code.trim() === currentLesson.starterCode.trim()) return false;
       if (currentLesson.validation) {
-        return currentLesson.validation(code, results);
+        const validationResult = currentLesson.validation(code, results);
+        if (!validationResult) return false;
+      } else if (requiresChange) {
+        if (code.trim() === currentLesson.starterCode.trim()) return false;
+        if (results.length === 0) return false;
       }
-      return results.length > 0;
+      return true;
     };
 
     if (isValid() && !completedIds.has(currentLesson.id)) {
