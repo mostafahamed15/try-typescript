@@ -18,15 +18,7 @@ const Editor = lazy(() => import("@monaco-editor/react"));
 
 import { getLessonsByLocale, createValidation, type Lesson, type Level } from "./data/lessons";
 import { getInitialLocale, t, type Locale } from "./i18n";
-
-async function transpileCode(code: string): Promise<string> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ts: any = await import("https://unpkg.com/typescript@5.3.3/lib/typescript.min.js");
-  const result = ts.transpileModule(code, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ESNext },
-  });
-  return result.outputText;
-}
+import { transpileCode } from "./ts-local";
 
 async function executeCode(code: string): Promise<string[]> {
   const logs: string[] = [];
