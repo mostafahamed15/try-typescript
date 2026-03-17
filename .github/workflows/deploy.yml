@@ -47,4 +47,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: try-typescript
           directory: dist
-          wranglerVersion: '3'
+          wranglerVersion: 'latest'
