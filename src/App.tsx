@@ -171,7 +171,7 @@ function LessonListModal({
 }
 
 export default function App() {
-  const [locale, setLocale] = useState<Locale>(getInitialLocale);
+  const [locale, setLocale] = useState<Locale>(getInitialLocale());
   const [isLoading, setIsLoading] = useState(true);
 
   const allLessons = getLessonsByLocale(locale);
