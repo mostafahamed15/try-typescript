@@ -1,18 +1,18 @@
-import type { Lesson } from './types';
-export type { Level, Lesson } from './types';
+import type { Lesson } from "./types";
+export type { Level, Lesson } from "./types";
 
 export const lessons: Lesson[] = [
   {
     id: 1,
-    title: 'Bem-vindo ao TypeScript',
-    level: 'basic',
+    title: "Bem-vindo ao TypeScript",
+    level: "basic",
     content:
-      'TypeScript é um superconjunto de JavaScript que adiciona tipagem estática. ' +
+      "TypeScript é um superconjunto de JavaScript que adiciona tipagem estática. " +
       'Com ele, você define o "formato" dos seus dados usando interfaces, evitando ' +
-      'erros em tempo de execução. Veja o exemplo: criamos uma interface `User` com ' +
-      'dois campos tipados e instanciamos um objeto que a respeita.',
+      "erros em tempo de execução. Veja o exemplo: criamos uma interface `User` com " +
+      "dois campos tipados e instanciamos um objeto que a respeita.",
     task: "Altere o nome do usuário de 'TypeScript Explorer' para outro nome qualquer.",
-    hint: 'Mude o valor de `name` dentro do objeto `user`.',
+    hint: "Mude o valor de `name` dentro do objeto `user`.",
     starterCode: `interface User {
   name: string;
   id: number;
@@ -27,14 +27,14 @@ console.log(\`Olá, \${user.name}! Seu ID é \${user.id}.\`);`,
   },
   {
     id: 2,
-    title: 'Tipagem Estática e Inferência',
-    level: 'basic',
+    title: "Tipagem Estática e Inferência",
+    level: "basic",
     content:
-      'TypeScript infere tipos automaticamente em muitos casos. Quando você define uma variável ' +
-      'com um valor inicial, TypeScript deduz seu tipo. Isso é chamado de inferência de tipo e ' +
-      'torna o código mais conciso enquanto mantém a segurança.',
-    task: 'Observe como o TypeScript infere o tipo da variável `message`.',
-    hint: 'O tipo é inferido a partir do valor inicial.',
+      "TypeScript infere tipos automaticamente em muitos casos. Quando você define uma variável " +
+      "com um valor inicial, TypeScript deduz seu tipo. Isso é chamado de inferência de tipo e " +
+      "torna o código mais conciso enquanto mantém a segurança.",
+    task: "Observe como o TypeScript infere o tipo da variável `message`.",
+    hint: "O tipo é inferido a partir do valor inicial.",
     starterCode: `let message = "Hello, TypeScript!"
 let count = 42
 let isActive = true
@@ -50,13 +50,13 @@ console.log(isActive)`,
   },
   {
     id: 3,
-    title: 'Interfaces',
-    level: 'basic',
+    title: "Interfaces",
+    level: "basic",
     content:
-      'Interfaces definem a estrutura que objetos devem seguir. São fundamentais em TypeScript ' +
-      'para garantir que objetos tenham as propriedades corretas com os tipos certos.',
-    task: 'Adicione uma propriedade `email` à interface `Person` e ao objeto.',
-    hint: 'Adicione `email: string` na interface.',
+      "Interfaces definem a estrutura que objetos devem seguir. São fundamentais em TypeScript " +
+      "para garantir que objetos tenham as propriedades corretas com os tipos certos.",
+    task: "Adicione uma propriedade `email` à interface `Person` e ao objeto.",
+    hint: "Adicione `email: string` na interface.",
     starterCode: `interface Person {
   name: string
   age: number
@@ -71,13 +71,13 @@ console.log(\`\${person.name} tem \${person.age} anos\`)`,
   },
   {
     id: 4,
-    title: 'Enums',
-    level: 'basic',
+    title: "Enums",
+    level: "basic",
     content:
-      'Enums permitem definir um conjunto de constantes nomeadas. São úteis para ' +
-      'representar estados, direções, papéis de usuário, etc. TypeScript suporta ' +
-      'enums numéricos (padrão) e de string.',
-    task: 'Adicione um valor `ADMIN` ao enum `Role` e crie um usuário com esse papel.',
+      "Enums permitem definir um conjunto de constantes nomeadas. São úteis para " +
+      "representar estados, direções, papéis de usuário, etc. TypeScript suporta " +
+      "enums numéricos (padrão) e de string.",
+    task: "Adicione um valor `ADMIN` ao enum `Role` e crie um usuário com esse papel.",
     hint: 'Adicione `ADMIN = "ADMIN"` ao enum e use `Role.ADMIN` no objeto.',
     starterCode: `enum Direction {
   UP = "UP",
@@ -107,14 +107,14 @@ console.log(\`\${player.name} (\${player.role}) está olhando para \${player.fac
   },
   {
     id: 5,
-    title: 'Type Aliases e Union Types',
-    level: 'basic',
+    title: "Type Aliases e Union Types",
+    level: "basic",
     content:
-      'Type aliases criam nomes para tipos complexos. Union types (`|`) permitem ' +
-      'que uma variável aceite mais de um tipo. Isso é muito mais seguro do que usar ' +
-      '`any` e ainda mantém a flexibilidade.',
-    task: 'Crie um type alias `Result` que seja `string | number | boolean`.',
-    hint: 'type Result = string | number | boolean;',
+      "Type aliases criam nomes para tipos complexos. Union types (`|`) permitem " +
+      "que uma variável aceite mais de um tipo. Isso é muito mais seguro do que usar " +
+      "`any` e ainda mantém a flexibilidade.",
+    task: "Crie um type alias `Result` que seja `string | number | boolean`.",
+    hint: "type Result = string | number | boolean;",
     starterCode: `type ID = string | number
 type Status = "active" | "inactive" | "pending"
 
@@ -137,14 +137,14 @@ console.log(getStatusLabel("active"))`,
   },
   {
     id: 6,
-    title: 'Type Assertions',
-    level: 'basic',
+    title: "Type Assertions",
+    level: "basic",
     content:
-      'Type assertions dizem ao TypeScript para tratar um valor como um tipo específico. ' +
+      "Type assertions dizem ao TypeScript para tratar um valor como um tipo específico. " +
       'Use `as` ou sintaxe de colchete angular. É como um "cast" em outras linguagens, ' +
-      'mas não converte o valor em tempo de execução.',
-    task: 'Use type assertion para tratar `input` como `string`.',
-    hint: 'const str = input as string;',
+      "mas não converte o valor em tempo de execução.",
+    task: "Use type assertion para tratar `input` como `string`.",
+    hint: "const str = input as string;",
     starterCode: `let input: unknown = "hello world"
 
 const length1 = (input as string).length
@@ -155,15 +155,15 @@ console.log("Length 2:", length2)`,
   },
   {
     id: 7,
-    title: 'Tipos Básicos',
-    level: 'basic',
+    title: "Tipos Básicos",
+    level: "basic",
     content:
-      'TypeScript suporta todos os tipos primitivos do JavaScript: `string`, `number`, ' +
-      '`boolean`, `null`, `undefined`. Além disso, oferece `symbol`, `bigint` e o ' +
-      'tipo `void` para funções que não retornam nada.',
-    task: 'Crie variáveis dos tipos aprendidos.',
+      "TypeScript suporta todos os tipos primitivos do JavaScript: `string`, `number`, " +
+      "`boolean`, `null`, `undefined`. Além disso, oferece `symbol`, `bigint` e o " +
+      "tipo `void` para funções que não retornam nada.",
+    task: "Crie variáveis dos tipos aprendidos.",
     hint: 'let name: string = "Alice";',
-    starterCode: `{let name: string = "Alice"
+    starterCode: `let name: string = "Alice"
 let age: number = 25
 let isStudent: boolean = true
 let nothing: null = null
@@ -171,16 +171,16 @@ let notDefined: undefined = undefined
 let id: symbol = Symbol("id")
 let bigNumber: bigint = 9007199254740991n
 
-console.log(name, age, isStudent)}`,
+console.log(name, age, isStudent)`,
   },
   {
     id: 8,
-    title: 'Arrays e Tuplas',
-    level: 'basic',
+    title: "Arrays e Tuplas",
+    level: "basic",
     content:
-      'Arrays em TypeScript podem ser tipados como `number[]` ou `Array<number>`. ' +
-      'Tuplas são arrays com tamanho fixo e tipos específicos em cada posição: `[string, number]`.',
-    task: 'Crie uma tupla com o nome e idade de uma pessoa.',
+      "Arrays em TypeScript podem ser tipados como `number[]` ou `Array<number>`. " +
+      "Tuplas são arrays com tamanho fixo e tipos específicos em cada posição: `[string, number]`.",
+    task: "Crie uma tupla com o nome e idade de uma pessoa.",
     hint: 'let person: [string, number] = ["Alice", 25];',
     starterCode: `const numbers: number[] = [1, 2, 3, 4, 5]
 const names: Array<string> = ["Alice", "Bob", "Charlie"]
@@ -194,13 +194,13 @@ console.log("Coords:", coords)`,
   },
   {
     id: 9,
-    title: 'Funções - Tipagem de Parâmetros e Retorno',
-    level: 'basic',
+    title: "Funções - Tipagem de Parâmetros e Retorno",
+    level: "basic",
     content:
-      'Funções em TypeScript podem ter tipos definidos para parâmetros e retorno. ' +
-      'Isso garante que a função seja chamada com os argumentos corretos e retorne o valor esperado.',
-    task: 'Adicione o tipo de retorno `number` à função `soma`.',
-    hint: 'function soma(a: number, b: number): number',
+      "Funções em TypeScript podem ter tipos definidos para parâmetros e retorno. " +
+      "Isso garante que a função seja chamada com os argumentos corretos e retorne o valor esperado.",
+    task: "Adicione o tipo de retorno `number` à função `soma`.",
+    hint: "function soma(a: number, b: number): number",
     starterCode: `function greet(name: string): string {
   return \`Olá, \${name}!\`
 }
@@ -217,14 +217,14 @@ console.log(add(10, 20))`,
   },
   {
     id: 10,
-    title: 'Parâmetros Opcionais e Default',
-    level: 'basic',
+    title: "Parâmetros Opcionais e Default",
+    level: "basic",
     content:
-      'Parâmetros opcionais usam `?` (ex: `name?: string`). Parâmetros com valor padrão ' +
-      'são automaticamente opcionais. A diferença é que `undefined` é passado para opcionais, ' +
-      'enquanto o valor default é usado para parâmetros com默认值.',
-    task: 'Torne o parâmetro `age` opcional na função `introduce`.',
-    hint: 'function introduce(name: string, age?: number)',
+      "Parâmetros opcionais usam `?` (ex: `name?: string`). Parâmetros com valor padrão " +
+      "são automaticamente opcionais. A diferença é que `undefined` é passado para opcionais, " +
+      "enquanto o valor default é usado para parâmetros com默认值.",
+    task: "Torne o parâmetro `age` opcional na função `introduce`.",
+    hint: "function introduce(name: string, age?: number)",
     starterCode: `function greet(name: string, greeting?: string): string {
   return greeting ? \`\${greeting}, \${name}!\` : \`Olá, \${name}!\`
 }
@@ -243,12 +243,12 @@ console.log(introduce("Diana"))`,
   },
   {
     id: 11,
-    title: 'Utility Types - Partial, Required, Pick, Omit',
-    level: 'advanced',
+    title: "Utility Types - Partial, Required, Pick, Omit",
+    level: "advanced",
     content:
-      'TypeScript inclui utility types embutidos que transformam tipos existentes: ' +
-      '`Partial<T>` torna todos os campos opcionais, `Required<T>` os torna obrigatórios, ' +
-      '`Pick<T, K>` seleciona campos, `Omit<T, K>` remove campos.',
+      "TypeScript inclui utility types embutidos que transformam tipos existentes: " +
+      "`Partial<T>` torna todos os campos opcionais, `Required<T>` os torna obrigatórios, " +
+      "`Pick<T, K>` seleciona campos, `Omit<T, K>` remove campos.",
     task: 'Use `Omit<User, "password">` para criar um tipo `PublicUser`.',
     hint: 'type PublicUser = Omit<User, "password">',
     starterCode: `interface User {
@@ -276,14 +276,14 @@ console.log("Preview:", JSON.stringify(preview))`,
   },
   {
     id: 12,
-    title: 'Mapped Types',
-    level: 'advanced',
+    title: "Mapped Types",
+    level: "advanced",
     content:
-      'Mapped types permitem criar novos tipos transformando cada propriedade de um tipo existente. ' +
-      'Usam a sintaxe `{ [K in keyof T]: ... }`. Combinados com `keyof` e modificadores ' +
-      '(`readonly`, `?`), são extremamente poderosos.',
-    task: 'Crie um mapped type `Nullable<T>` que torne todas as propriedades opcionais.',
-    hint: 'type Nullable<T> = { [K in keyof T]?: T[K] | null; }',
+      "Mapped types permitem criar novos tipos transformando cada propriedade de um tipo existente. " +
+      "Usam a sintaxe `{ [K in keyof T]: ... }`. Combinados com `keyof` e modificadores " +
+      "(`readonly`, `?`), são extremamente poderosos.",
+    task: "Crie um mapped type `Nullable<T>` que torne todas as propriedades opcionais.",
+    hint: "type Nullable<T> = { [K in keyof T]?: T[K] | null; }",
     starterCode: `interface Config {
   host: string
   port: number
@@ -309,14 +309,14 @@ console.log("Partial:", JSON.stringify(partial))`,
   },
   {
     id: 13,
-    title: 'Conditional Types',
-    level: 'advanced',
+    title: "Conditional Types",
+    level: "advanced",
     content:
-      'Conditional types seguem a sintaxe `T extends U ? X : Y` — se `T` é atribuível a `U`, ' +
-      'o tipo resultante é `X`, caso contrário `Y`. Com `infer`, você pode extrair tipos ' +
-      'de dentro de outros tipos.',
-    task: 'Crie um conditional type `IsArray<T>` que retorne `true` se T for array.',
-    hint: 'type IsArray<T> = T extends any[] ? true : false',
+      "Conditional types seguem a sintaxe `T extends U ? X : Y` — se `T` é atribuível a `U`, " +
+      "o tipo resultante é `X`, caso contrário `Y`. Com `infer`, você pode extrair tipos " +
+      "de dentro de outros tipos.",
+    task: "Crie um conditional type `IsArray<T>` que retorne `true` se T for array.",
+    hint: "type IsArray<T> = T extends any[] ? true : false",
     starterCode: `type IsString<T> = T extends string ? "yes" : "no"
 
 type A = IsString<string>
@@ -340,14 +340,14 @@ console.log("Result:", JSON.stringify(result))`,
   },
   {
     id: 14,
-    title: 'Decorators',
-    level: 'advanced',
+    title: "Decorators",
+    level: "advanced",
     content:
-      'Decorators são funções especiais que podem ser aplicadas a classes, métodos, ' +
-      'propriedades e parâmetros usando a sintaxe `@decorator`. São amplamente usados ' +
-      'em frameworks como Angular, NestJS e TypeORM.',
-    task: 'Crie um decorator `@readonly` que torne uma propriedade não-editável.',
-    hint: 'Use Object.defineProperty no descriptor.',
+      "Decorators são funções especiais que podem ser aplicadas a classes, métodos, " +
+      "propriedades e parâmetros usando a sintaxe `@decorator`. São amplamente usados " +
+      "em frameworks como Angular, NestJS e TypeORM.",
+    task: "Crie um decorator `@readonly` que torne uma propriedade não-editável.",
+    hint: "Use Object.defineProperty no descriptor.",
     starterCode: `function sealed(constructor: Function) {
   Object.seal(constructor)
   Object.seal(constructor.prototype)
@@ -381,14 +381,14 @@ console.log("Fib(10):", calc.fibonacci(10))`,
   },
   {
     id: 15,
-    title: 'Generics - Introdução',
-    level: 'basic',
+    title: "Generics - Introdução",
+    level: "basic",
     content:
-      'Generics permitem criar componentes que funcionam com qualquer tipo, mantendo ' +
-      'a segurança de tipos. São representados por `<T>` e permitem criar funções, ' +
-      'classes e interfaces reutilizáveis.',
-    task: 'Crie uma função `identity` que retorne o mesmo valor passado.',
-    hint: 'function identity<T>(value: T): T { return value; }',
+      "Generics permitem criar componentes que funcionam com qualquer tipo, mantendo " +
+      "a segurança de tipos. São representados por `<T>` e permitem criar funções, " +
+      "classes e interfaces reutilizáveis.",
+    task: "Crie uma função `identity` que retorne o mesmo valor passado.",
+    hint: "function identity<T>(value: T): T { return value; }",
     starterCode: `function identity<T>(value: T): T {
   return value
 }
@@ -401,11 +401,11 @@ console.log(str, num, auto)`,
   },
   {
     id: 16,
-    title: 'Tipos Literais',
-    level: 'basic',
+    title: "Tipos Literais",
+    level: "basic",
     content:
-      'TypeScript permite especificar valores exatos que uma variável pode ter usando tipos literais. ' +
-      'Isso é útil quando você quer restringir um valor a um conjunto específico de strings ou números.',
+      "TypeScript permite especificar valores exatos que uma variável pode ter usando tipos literais. " +
+      "Isso é útil quando você quer restringir um valor a um conjunto específico de strings ou números.",
     task: "Crie uma variável que possa ter apenas os valores 'pending', 'loading' ou 'success'.",
     hint: "type Status = 'pending' | 'loading' | 'success';",
     starterCode: `type Status = "pending" | "loading" | "success"
@@ -417,13 +417,13 @@ console.log("Status atual:", currentStatus)`,
   },
   {
     id: 17,
-    title: 'Funções Sobrescritas (Overloads)',
-    level: 'basic',
+    title: "Funções Sobrescritas (Overloads)",
+    level: "basic",
     content:
-      'TypeScript suporta sobrescrita de funções, permitindo que você defina múltiplas assinaturas. ' +
-      'O TypeScript escolhe a assinatura correta com base nos argumentos fornecidos.',
-    task: 'Crie uma função `format` que possa formatar números e datas.',
-    hint: 'Use múltiplas assinaturas antes da implementação.',
+      "TypeScript suporta sobrescrita de funções, permitindo que você defina múltiplas assinaturas. " +
+      "O TypeScript escolhe a assinatura correta com base nos argumentos fornecidos.",
+    task: "Crie uma função `format` que possa formatar números e datas.",
+    hint: "Use múltiplas assinaturas antes da implementação.",
     starterCode: `function format(value: string): string
 function format(value: number, decimals?: number): string
 function format(value: Date): string
@@ -446,13 +446,13 @@ console.log(format(new Date()))`,
   },
   {
     id: 18,
-    title: 'Módulos e Imports/Exports',
-    level: 'basic',
+    title: "Módulos e Imports/Exports",
+    level: "basic",
     content:
-      'TypeScript dá suporte total ao sistema de módulos ES6. Organize seu código em arquivos ' +
-      'separados com importações e exportações explícitas para melhor encapsulamento.',
-    task: 'Crie e exporte uma função de um módulo, e importe-a em outro.',
-    hint: 'Use `export` e `import` no padrão ES6.',
+      "TypeScript dá suporte total ao sistema de módulos ES6. Organize seu código em arquivos " +
+      "separados com importações e exportações explícitas para melhor encapsulamento.",
+    task: "Crie e exporte uma função de um módulo, e importe-a em outro.",
+    hint: "Use `export` e `import` no padrão ES6.",
     starterCode: `export const capitalize = (str: string): string => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 }
@@ -472,13 +472,13 @@ console.log(trim(text))`,
   },
   {
     id: 19,
-    title: 'Namespaces',
-    level: 'basic',
+    title: "Namespaces",
+    level: "basic",
     content:
-      'Namespaces agrupam código relacionado sem poluir o escopo global. Use `namespace` ' +
-      'para organizar código internamente e `export` para expor membros.',
-    task: 'Crie um namespace `MathUtils` com funções `add` e `multiply`.',
-    hint: 'namespace MathUtils { export function add(...) }',
+      "Namespaces agrupam código relacionado sem poluir o escopo global. Use `namespace` " +
+      "para organizar código internamente e `export` para expor membros.",
+    task: "Crie um namespace `MathUtils` com funções `add` e `multiply`.",
+    hint: "namespace MathUtils { export function add(...) }",
     starterCode: `namespace MathUtils {
   export function add(a: number, b: number): number {
     return a + b
@@ -497,13 +497,13 @@ console.log("PI:", MathUtils.PI)`,
   },
   {
     id: 20,
-    title: 'Iteradores e Geradores',
-    level: 'basic',
+    title: "Iteradores e Geradores",
+    level: "basic",
     content:
-      'TypeScript dá suporte total aos protocolos iteradores e geradores do ES6. ' +
-      'Geradores (`function*`) fornecem uma maneira fácil de criar funções que retornam sequências.',
-    task: 'Crie uma função geradora que produza números de 1 a N.',
-    hint: 'Use function* e yield.',
+      "TypeScript dá suporte total aos protocolos iteradores e geradores do ES6. " +
+      "Geradores (`function*`) fornecem uma maneira fácil de criar funções que retornam sequências.",
+    task: "Crie uma função geradora que produza números de 1 a N.",
+    hint: "Use function* e yield.",
     starterCode: `function* counter(limit: number) {
   let count = 1
   while (count <= limit) {
@@ -522,13 +522,13 @@ console.log("Como array:", nums)`,
   },
   {
     id: 21,
-    title: 'Inferência de Tipo Avançada',
-    level: 'advanced',
+    title: "Inferência de Tipo Avançada",
+    level: "advanced",
     content:
-      'TypeScript infere tipos automaticamente em muitos contextos. A inferência funciona ' +
-      'em variáveis, parâmetros, retornos e usa análise de fluxo de controle e contextual typing.',
-    task: 'Observe como o TypeScript infere tipos diferentes no mesmo exemplo.',
-    hint: 'O tipo de retorno muda baseado no parâmetro.',
+      "TypeScript infere tipos automaticamente em muitos contextos. A inferência funciona " +
+      "em variáveis, parâmetros, retornos e usa análise de fluxo de controle e contextual typing.",
+    task: "Observe como o TypeScript infere tipos diferentes no mesmo exemplo.",
+    hint: "O tipo de retorno muda baseado no parâmetro.",
     starterCode: `function processInput(input: string | number) {
   if (typeof input === "string") {
     return input.toUpperCase()
@@ -548,13 +548,13 @@ console.log("Doubled:", doubled)`,
   },
   {
     id: 22,
-    title: 'Compatibilidade Estrutural de Tipos',
-    level: 'advanced',
+    title: "Compatibilidade Estrutural de Tipos",
+    level: "advanced",
     content:
-      'TypeScript usa compatibilidade estrutural — dois tipos são compatíveis se têm a mesma estrutura. ' +
-      'Isso é diferente de sistemas nominativos e torna o TypeScript mais flexível.',
-    task: 'Veja como objetos com estruturas compatíveis podem ser usados interchangeably.',
-    hint: 'Se as propriedades batem, o tipo é compatível.',
+      "TypeScript usa compatibilidade estrutural — dois tipos são compatíveis se têm a mesma estrutura. " +
+      "Isso é diferente de sistemas nominativos e torna o TypeScript mais flexível.",
+    task: "Veja como objetos com estruturas compatíveis podem ser usados interchangeably.",
+    hint: "Se as propriedades batem, o tipo é compatível.",
     starterCode: `interface Point {
   x: number
   y: number
@@ -579,13 +579,13 @@ console.log("Distance:", distanceFromOrigin(namedPoint))`,
   },
   {
     id: 23,
-    title: 'Trabalhando com JavaScript',
-    level: 'basic',
+    title: "Trabalhando com JavaScript",
+    level: "basic",
     content:
-      'TypeScript foi projetado para adotar gradualmente JavaScript existente. ' +
-      'Use `@ts-check` ou `checkJs: true` no tsconfig.json para verificar arquivos .js.',
-    task: 'Entenda como TypeScript verifica código JavaScript.',
-    hint: 'Use JSDoc para adicionar tipos em arquivos .js.',
+      "TypeScript foi projetado para adotar gradualmente JavaScript existente. " +
+      "Use `@ts-check` ou `checkJs: true` no tsconfig.json para verificar arquivos .js.",
+    task: "Entenda como TypeScript verifica código JavaScript.",
+    hint: "Use JSDoc para adicionar tipos em arquivos .js.",
     starterCode: `// Simulando verificação em arquivo .js
 // Para habilitar: use // @ts-check no topo
 
@@ -611,13 +611,13 @@ console.log("Fatorial de 5:", factorial(5))`,
   },
   {
     id: 24,
-    title: 'Arquivos de Declaração (.d.ts)',
-    level: 'advanced',
+    title: "Arquivos de Declaração (.d.ts)",
+    level: "advanced",
     content:
-      'Arquivos de declaração (.d.ts) fornecem informações de tipo para bibliotecas JavaScript. ' +
-      'Definições de tipo para bibliotecas populares estão no DefinitelyTyped (@types/*).',
-    task: 'Crie um arquivo de declaração simples para uma função.',
-    hint: 'declare function nome(params): returnType;',
+      "Arquivos de declaração (.d.ts) fornecem informações de tipo para bibliotecas JavaScript. " +
+      "Definições de tipo para bibliotecas populares estão no DefinitelyTyped (@types/*).",
+    task: "Crie um arquivo de declaração simples para uma função.",
+    hint: "declare function nome(params): returnType;",
     starterCode: `// Simulando um arquivo de declaração
 
 declare namespace Utils {
@@ -643,12 +643,12 @@ console.log("Instale tipos: npm install @types/lodash")`,
   },
   {
     id: 25,
-    title: 'Classes - Introdução',
-    level: 'basic',
+    title: "Classes - Introdução",
+    level: "basic",
     content:
-      'Classes em TypeScript funcionam como em JavaScript moderno, mas com tipagem completa. ' +
-      'Você pode definir propriedades, métodos, construtores e modificadores de acesso.',
-    task: 'Adicione um método `sayHello` à classe `Person`.',
+      "Classes em TypeScript funcionam como em JavaScript moderno, mas com tipagem completa. " +
+      "Você pode definir propriedades, métodos, construtores e modificadores de acesso.",
+    task: "Adicione um método `sayHello` à classe `Person`.",
     hint: "sayHello() { return 'Olá, ' + this.name; }",
     starterCode: `class Person {
   name: string
@@ -669,13 +669,13 @@ console.log(person.greet())`,
   },
   {
     id: 26,
-    title: 'Modificadores de Acesso',
-    level: 'basic',
+    title: "Modificadores de Acesso",
+    level: "basic",
     content:
-      'TypeScript oferece `public`, `private` e `protected` para controlar o acesso a membros. ' +
-      'Também há `readonly` para propriedades que não podem ser alteradas após inicialização.',
-    task: 'Torne a propriedade `balance` privada e adicione um getter.',
-    hint: 'private balance: number; public getBalance()',
+      "TypeScript oferece `public`, `private` e `protected` para controlar o acesso a membros. " +
+      "Também há `readonly` para propriedades que não podem ser alteradas após inicialização.",
+    task: "Torne a propriedade `balance` privada e adicione um getter.",
+    hint: "private balance: number; public getBalance()",
     starterCode: `class BankAccount {
   public readonly id: number
   private balance: number
@@ -706,13 +706,13 @@ console.log("New Balance:", account.getBalance())`,
   },
   {
     id: 27,
-    title: 'Herança de Classes',
-    level: 'basic',
+    title: "Herança de Classes",
+    level: "basic",
     content:
-      'Classes podem herdar de outras usando `extends`. A classe filha tem acesso a ' +
-      'métodos e propriedades públicas/protegidas da classe pai, e pode sobrescrevê-los.',
-    task: 'Crie uma classe `Student` que herde de `Person`.',
-    hint: 'class Student extends Person { }',
+      "Classes podem herdar de outras usando `extends`. A classe filha tem acesso a " +
+      "métodos e propriedades públicas/protegidas da classe pai, e pode sobrescrevê-los.",
+    task: "Crie uma classe `Student` que herde de `Person`.",
+    hint: "class Student extends Person { }",
     starterCode: `class Person {
   constructor(public name: string, public age: number) {}
   
@@ -737,13 +737,13 @@ console.log(student.study())`,
   },
   {
     id: 28,
-    title: 'Classes Abstratas',
-    level: 'basic',
+    title: "Classes Abstratas",
+    level: "basic",
     content:
-      'Classes abstratas não podem ser instanciadas diretamente, servem como base para outras classes. ' +
-      'Podem conter métodos abstratos (sem implementação) que as classes filhas devem implementar.',
-    task: 'Crie uma classe abstrata `Shape` com método abstrato `area`.',
-    hint: 'abstract class Shape { abstract area(): number; }',
+      "Classes abstratas não podem ser instanciadas diretamente, servem como base para outras classes. " +
+      "Podem conter métodos abstratos (sem implementação) que as classes filhas devem implementar.",
+    task: "Crie uma classe abstrata `Shape` com método abstrato `area`.",
+    hint: "abstract class Shape { abstract area(): number; }",
     starterCode: `abstract class Shape {
   abstract area(): number
   abstract perimeter(): number
@@ -789,12 +789,12 @@ console.log(circle.describe())`,
   },
   {
     id: 29,
-    title: 'Getters e Setters',
-    level: 'basic',
+    title: "Getters e Setters",
+    level: "basic",
     content:
-      'Getters e setters permitem controle preciso sobre o acesso a propriedades. ' +
-      'Úteis para validação, computação de valores, ou manter invariantes de classe.',
-    task: 'Crie um getter `fullName` que retorne nome completo.',
+      "Getters e setters permitem controle preciso sobre o acesso a propriedades. " +
+      "Úteis para validação, computação de valores, ou manter invariantes de classe.",
+    task: "Crie um getter `fullName` que retorne nome completo.",
     hint: "get fullName(): string { return this.firstName + ' ' + this.lastName; }",
     starterCode: `class User {
   private _password: string = ""
@@ -828,13 +828,13 @@ console.log("Password:", user.password)`,
   },
   {
     id: 30,
-    title: 'Static Members',
-    level: 'basic',
+    title: "Static Members",
+    level: "basic",
     content:
-      'Membros estáticos pertencem à classe em si, não às instâncias. ' +
-      'Acessados via `ClassName.property`, são úteis para constantes ou funções utilitárias.',
-    task: 'Adicione um método estático `createDefault` à classe `User`.',
-    hint: 'static createDefault(): User { }',
+      "Membros estáticos pertencem à classe em si, não às instâncias. " +
+      "Acessados via `ClassName.property`, são úteis para constantes ou funções utilitárias.",
+    task: "Adicione um método estático `createDefault` à classe `User`.",
+    hint: "static createDefault(): User { }",
     starterCode: `class MathHelper {
   static readonly PI = 3.14159
 
@@ -854,14 +854,14 @@ console.log("Factorial 5:", MathHelper.factorial(5))`,
   },
   {
     id: 31,
-    title: 'Utility Types - Record, Partial, Readonly',
-    level: 'advanced',
+    title: "Utility Types - Record, Partial, Readonly",
+    level: "advanced",
     content:
-      '`Record<K, V>` cria um tipo objeto com chaves K e valores V. ' +
-      '`Partial<T>` torna todas as propriedades opcionais. ' +
-      '`Readonly<T>` torna todas as propriedades apenas leitura.',
-    task: 'Crie um tipo `UserRecord` usando Record<string, User>.',
-    hint: 'type UserRecord = Record<string, User>',
+      "`Record<K, V>` cria um tipo objeto com chaves K e valores V. " +
+      "`Partial<T>` torna todas as propriedades opcionais. " +
+      "`Readonly<T>` torna todas as propriedades apenas leitura.",
+    task: "Crie um tipo `UserRecord` usando Record<string, User>.",
+    hint: "type UserRecord = Record<string, User>",
     starterCode: `interface User {
   id: number
   name: string
@@ -885,13 +885,13 @@ console.log("Partial:", JSON.stringify(partial))`,
   },
   {
     id: 32,
-    title: 'Utility Types - Extract e Exclude',
-    level: 'advanced',
+    title: "Utility Types - Extract e Exclude",
+    level: "advanced",
     content:
-      '`Extract<T, U>` extrai de T os tipos que são atribuíveis a U. ' +
-      '`Exclude<T, U>` remove de T os tipos que são atribuíveis a U.',
-    task: 'Use Extract para obter apenas strings de um union type.',
-    hint: 'type Strings = Extract<T, string>',
+      "`Extract<T, U>` extrai de T os tipos que são atribuíveis a U. " +
+      "`Exclude<T, U>` remove de T os tipos que são atribuíveis a U.",
+    task: "Use Extract para obter apenas strings de um union type.",
+    hint: "type Strings = Extract<T, string>",
     starterCode: `type T = string | number | boolean | null
 
 type Strings = Extract<T, string>
@@ -908,13 +908,13 @@ console.log("NotNull:", bool)`,
   },
   {
     id: 33,
-    title: 'Utility Types - ReturnType e Parameters',
-    level: 'advanced',
+    title: "Utility Types - ReturnType e Parameters",
+    level: "advanced",
     content:
-      '`ReturnType<T>` obtém o tipo de retorno de uma função. ' +
-      '`Parameters<T>` obtém os tipos dos parâmetros como tupla.',
-    task: 'Obtenha o tipo de retorno e parâmetros de uma função.',
-    hint: 'type R = ReturnType<typeof func>',
+      "`ReturnType<T>` obtém o tipo de retorno de uma função. " +
+      "`Parameters<T>` obtém os tipos dos parâmetros como tupla.",
+    task: "Obtenha o tipo de retorno e parâmetros de uma função.",
+    hint: "type R = ReturnType<typeof func>",
     starterCode: `function createUser(name: string, age: number): { name: string; age: number; id: number } {
   return { name, age, id: Math.random() }
 }
@@ -930,13 +930,13 @@ console.log("Args:", args)`,
   },
   {
     id: 34,
-    title: 'Type Guards',
-    level: 'basic',
+    title: "Type Guards",
+    level: "basic",
     content:
-      'Type guards são expressões que refinam o tipo de uma variável. ' +
-      'Use `typeof`, `instanceof`, ou personalizados com `is` para filtrar tipos em unions.',
-    task: 'Crie um type guard para verificar se um valor é string.',
-    hint: 'function isString(value: unknown): value is string { }',
+      "Type guards são expressões que refinam o tipo de uma variável. " +
+      "Use `typeof`, `instanceof`, ou personalizados com `is` para filtrar tipos em unions.",
+    task: "Crie um type guard para verificar se um valor é string.",
+    hint: "function isString(value: unknown): value is string { }",
     starterCode: `function isString(value: unknown): value is string {
   return typeof value === "string"
 }
@@ -970,13 +970,13 @@ if (isDog(pet)) {
   },
   {
     id: 35,
-    title: 'unknown e any',
-    level: 'basic',
+    title: "unknown e any",
+    level: "basic",
     content:
-      '`any` desabilita a verificação de tipos completamente. ' +
+      "`any` desabilita a verificação de tipos completamente. " +
       '`unknown` é o tipo "seguro" que representa qualquer valor — você deve refiná-lo antes de usar.',
-    task: 'Refine um tipo `unknown` para usá-lo com segurança.',
-    hint: 'Use type guards para verificar o tipo.',
+    task: "Refine um tipo `unknown` para usá-lo com segurança.",
+    hint: "Use type guards para verificar o tipo.",
     starterCode: `let anyValue: any = "hello"
 let unknownValue: unknown = "world"
 
@@ -993,13 +993,13 @@ console.log(str)`,
   },
   {
     id: 36,
-    title: 'never',
-    level: 'basic',
+    title: "never",
+    level: "basic",
     content:
-      '`never` representa valores que nunca ocorrem. Funções que sempre lançam erros ' +
-      'ou loops infinitos têm tipo de retorno `never`. Também é usado em unions exaustivas.',
-    task: 'Crie uma função que lança erro e tem retorno never.',
-    hint: 'function error(): never { throw new Error(); }',
+      "`never` representa valores que nunca ocorrem. Funções que sempre lançam erros " +
+      "ou loops infinitos têm tipo de retorno `never`. Também é usado em unions exaustivas.",
+    task: "Crie uma função que lança erro e tem retorno never.",
+    hint: "function error(): never { throw new Error(); }",
     starterCode: `function throwError(message: string): never {
   throw new Error(message)
 }
@@ -1030,11 +1030,11 @@ console.log(getDirection("North"))`,
   },
   {
     id: 37,
-    title: 'keyof e Index Access Types',
-    level: 'advanced',
+    title: "keyof e Index Access Types",
+    level: "advanced",
     content:
-      '`keyof` obtém as chaves de um tipo como union. ' +
-      'Use `T[K]` para acessar o tipo de uma propriedade específica.',
+      "`keyof` obtém as chaves de um tipo como union. " +
+      "Use `T[K]` para acessar o tipo de uma propriedade específica.",
     task: "Obtenha as chaves de User e o tipo da propriedade 'name'.",
     hint: 'type Keys = keyof User; type NameType = User["name"]',
     starterCode: `interface User {
@@ -1059,13 +1059,13 @@ console.log(getProperty(user, "email"))`,
   },
   {
     id: 38,
-    title: 'Generic Constraints',
-    level: 'basic',
+    title: "Generic Constraints",
+    level: "basic",
     content:
-      'Constraints (restrições) usam `extends` para limitar os tipos que podem ser usados com generics. ' +
-      'Isso garante que o tipo tenha as propriedades necessárias.',
-    task: 'Crie um generic que só aceita objetos com propriedade `length`.',
-    hint: 'function fn<T extends { length: number }>(arg: T)',
+      "Constraints (restrições) usam `extends` para limitar os tipos que podem ser usados com generics. " +
+      "Isso garante que o tipo tenha as propriedades necessárias.",
+    task: "Crie um generic que só aceita objetos com propriedade `length`.",
+    hint: "function fn<T extends { length: number }>(arg: T)",
     starterCode: `function getLength<T extends { length: number }>(arg: T): number {
   return arg.length
 }
@@ -1083,13 +1083,13 @@ console.log("Merged:", JSON.stringify(result))`,
   },
   {
     id: 39,
-    title: 'Generic Classes',
-    level: 'basic',
+    title: "Generic Classes",
+    level: "basic",
     content:
-      'Classes genéricas permitem criar componentes reutilizáveis que funcionam com diferentes tipos. ' +
-      'O tipo é especificado ao criar uma instância da classe.',
-    task: 'Crie uma classe `Box<T>` que armazena um valor.',
-    hint: 'class Box<T> { private content: T; }',
+      "Classes genéricas permitem criar componentes reutilizáveis que funcionam com diferentes tipos. " +
+      "O tipo é especificado ao criar uma instância da classe.",
+    task: "Crie uma classe `Box<T>` que armazena um valor.",
+    hint: "class Box<T> { private content: T; }",
     starterCode: `class Box<T> {
   private content: T
 
@@ -1117,13 +1117,13 @@ console.log("Updated:", numberBox.get())`,
   },
   {
     id: 40,
-    title: 'Generic Interfaces',
-    level: 'basic',
+    title: "Generic Interfaces",
+    level: "basic",
     content:
-      'Interfaces genéricas definem contratos que funcionam com múltiplos tipos. ' +
-      'São a base de bibliotecas como React, Zod e Prisma.',
-    task: 'Crie uma interface `Repository<T>` com métodos CRUD.',
-    hint: 'interface Repository<T> { findAll(): T[]; }',
+      "Interfaces genéricas definem contratos que funcionam com múltiplos tipos. " +
+      "São a base de bibliotecas como React, Zod e Prisma.",
+    task: "Crie uma interface `Repository<T>` com métodos CRUD.",
+    hint: "interface Repository<T> { findAll(): T[]; }",
     starterCode: `interface Entity {
   id: number
 }
@@ -1178,13 +1178,13 @@ console.log("Find 1:", repo.findById(1))`,
   },
   {
     id: 41,
-    title: 'Tipagem de Error Handling',
-    level: 'basic',
+    title: "Tipagem de Error Handling",
+    level: "basic",
     content:
-      'TypeScript melhora o tratamento de erros com melhor inferência em blocos try/catch. ' +
-      'Especifique o tipo do erro para melhor autocomplete.',
-    task: 'Crie uma função que pode lançar erros e trate-os.',
-    hint: 'try { } catch (error) { if (error instanceof Error) { } }',
+      "TypeScript melhora o tratamento de erros com melhor inferência em blocos try/catch. " +
+      "Especifique o tipo do erro para melhor autocomplete.",
+    task: "Crie uma função que pode lançar erros e trate-os.",
+    hint: "try { } catch (error) { if (error instanceof Error) { } }",
     starterCode: `function divide(a: number, b: number): number {
   if (b === 0) {
     throw new Error("Division by zero is not allowed")
@@ -1228,13 +1228,13 @@ try {
   },
   {
     id: 42,
-    title: 'Async/Await e Promises',
-    level: 'basic',
+    title: "Async/Await e Promises",
+    level: "basic",
     content:
-      'TypeScript suporta async/await completamente tipado. Funções async retornam Promises, ' +
-      'e você pode tipar o valor resolvido.',
-    task: 'Crie uma função async que retorna um usuário tipado.',
-    hint: 'async function fetchUser(): Promise<User> { }',
+      "TypeScript suporta async/await completamente tipado. Funções async retornam Promises, " +
+      "e você pode tipar o valor resolvido.",
+    task: "Crie uma função async que retorna um usuário tipado.",
+    hint: "async function fetchUser(): Promise<User> { }",
     starterCode: `interface User {
   id: number
   name: string
@@ -1270,13 +1270,13 @@ main()`,
   },
   {
     id: 43,
-    title: 'this em Tipos',
-    level: 'basic',
+    title: "this em Tipos",
+    level: "basic",
     content:
-      'TypeScript permite tipar `this` em métodos. Use `this` como primeiro parâmetro ' +
-      'para garantir que métodos sejam chamados no contexto correto (fluent API).',
-    task: 'Crie uma fluent API com métodos que retornam `this`.',
-    hint: 'add(name: string): this { }',
+      "TypeScript permite tipar `this` em métodos. Use `this` como primeiro parâmetro " +
+      "para garantir que métodos sejam chamados no contexto correto (fluent API).",
+    task: "Crie uma fluent API com métodos que retornam `this`.",
+    hint: "add(name: string): this { }",
     starterCode: `class Builder {
   private parts: string[] = []
 
@@ -1329,13 +1329,13 @@ console.log("Calc result:", calc.result())`,
   },
   {
     id: 44,
-    title: 'Optional Chaining e Nullish Coalescing',
-    level: 'basic',
+    title: "Optional Chaining e Nullish Coalescing",
+    level: "basic",
     content:
-      '`?.` acessa propriedades profundas sem erro se algo for null/undefined. ' +
-      '`??` retorna o operando direito se o esquerdo for null/undefined.',
-    task: 'Use optional chaining para acessar propriedade aninhada.',
-    hint: 'user?.address?.city',
+      "`?.` acessa propriedades profundas sem erro se algo for null/undefined. " +
+      "`??` retorna o operando direito se o esquerdo for null/undefined.",
+    task: "Use optional chaining para acessar propriedade aninhada.",
+    hint: "user?.address?.city",
     starterCode: `interface User {
   name: string
   address?: {
@@ -1368,13 +1368,13 @@ console.log("Zero:", zero)`,
   },
   {
     id: 45,
-    title: 'Non-null Assertion Operator',
-    level: 'basic',
+    title: "Non-null Assertion Operator",
+    level: "basic",
     content:
-      '`!` diz ao TypeScript que um valor não é null/undefined. Use com cautela — ' +
-      'só quando você tem certeza que o valor existe.',
-    task: 'Use non-null assertion para acessar propriedade garantida.',
-    hint: 'element!.value',
+      "`!` diz ao TypeScript que um valor não é null/undefined. Use com cautela — " +
+      "só quando você tem certeza que o valor existe.",
+    task: "Use non-null assertion para acessar propriedade garantida.",
+    hint: "element!.value",
     starterCode: `function getElement(): HTMLInputElement | null {
   return document.createElement("input")
 }
@@ -1392,13 +1392,13 @@ console.log("Result:", result)`,
   },
   {
     id: 46,
-    title: 'Type Casting vs Assertion',
-    level: 'basic',
+    title: "Type Casting vs Assertion",
+    level: "basic",
     content:
-      'Type assertions (`as`) convertem tipos. Use-as quando você sabe mais sobre o tipo ' +
-      'do que o TypeScript. Diferente de casting em outras linguagens, não converte o valor.',
-    task: 'Use assertion para converter um tipo para outro.',
-    hint: 'const num = value as number',
+      "Type assertions (`as`) convertem tipos. Use-as quando você sabe mais sobre o tipo " +
+      "do que o TypeScript. Diferente de casting em outras linguagens, não converte o valor.",
+    task: "Use assertion para converter um tipo para outro.",
+    hint: "const num = value as number",
     starterCode: `let input: unknown = "123"
 
 const strLength1 = (input as string).length
@@ -1430,13 +1430,13 @@ processAnimal(dog)`,
   },
   {
     id: 47,
-    title: 'Template Literal Types',
-    level: 'advanced',
+    title: "Template Literal Types",
+    level: "advanced",
     content:
-      'Template literal types criam novos tipos usando strings templates. ' +
-      'Combine com infer para extrair e manipular strings em tipos.',
-    task: 'Crie um tipo que cria getters automaticamente.',
-    hint: 'type Getters<T> = { [K in keyof T as `get${K}`]: () => T[K] }',
+      "Template literal types criam novos tipos usando strings templates. " +
+      "Combine com infer para extrair e manipular strings em tipos.",
+    task: "Crie um tipo que cria getters automaticamente.",
+    hint: "type Getters<T> = { [K in keyof T as `get${K}`]: () => T[K] }",
     starterCode: `type World = "world"
 type Greeting = \`hello \${World}\`
 
@@ -1465,12 +1465,12 @@ console.log(getters.getAge())`,
   },
   {
     id: 48,
-    title: 'Discriminated Unions',
-    level: 'basic',
+    title: "Discriminated Unions",
+    level: "basic",
     content:
-      'Crie unions com uma propriedade em comum (discriminador) para facilitar o TypeScript ' +
-      'identificar qual membro da union está em uso. Muito útil para state management.',
-    task: 'Crie uma discriminated union para formatos de arquivo.',
+      "Crie unions com uma propriedade em comum (discriminador) para facilitar o TypeScript " +
+      "identificar qual membro da union está em uso. Muito útil para state management.",
+    task: "Crie uma discriminated union para formatos de arquivo.",
     hint: 'type File = { type: "image", data: ... } | { type: "video", data: ... }',
     starterCode: `type Loading = { status: "loading" }
 type Success = { status: "success"; data: string }
@@ -1502,13 +1502,13 @@ handleResult(errorResult)`,
   },
   {
     id: 49,
-    title: 'Mixin Classes',
-    level: 'advanced',
+    title: "Mixin Classes",
+    level: "advanced",
     content:
-      'Mixins são funções que recebem uma classe e retornam uma nova classe com funcionalidades extras. ' +
-      'Útil para composição quando herança simples não é suficiente.',
-    task: 'Crie um mixin `Serializable` que adiciona método toJSON.',
-    hint: 'function Serializable<T extends Constructor<{}>>(Base: T)',
+      "Mixins são funções que recebem uma classe e retornam uma nova classe com funcionalidades extras. " +
+      "Útil para composição quando herança simples não é suficiente.",
+    task: "Crie um mixin `Serializable` que adiciona método toJSON.",
+    hint: "function Serializable<T extends Constructor<{}>>(Base: T)",
     starterCode: `type Constructor<T = {}> = new (...args: any[]) => T
 
 function Serializable<T extends Constructor<{}>>(Base: T) {
@@ -1541,13 +1541,13 @@ console.log("User:", JSON.stringify(user, null, 2))`,
   },
   {
     id: 50,
-    title: 'Declaration Merging',
-    level: 'advanced',
+    title: "Declaration Merging",
+    level: "advanced",
     content:
       'TypeScript permite que interfaces e namespaces com o mesmo nome sejam "mesclados". ' +
-      'Interfaces são mescladas automaticamente, namespaces requerem `export`.',
-    task: 'Crie uma interface que é mesclada com outra.',
-    hint: 'interface Animal { name: string; } interface Animal { age: number; }',
+      "Interfaces são mescladas automaticamente, namespaces requerem `export`.",
+    task: "Crie uma interface que é mesclada com outra.",
+    hint: "interface Animal { name: string; } interface Animal { age: number; }",
     starterCode: `interface User {
   name: string
 }
@@ -1582,13 +1582,13 @@ console.log("Declaration merging works!")`,
   },
   {
     id: 51,
-    title: 'Type-safe Event Emitter',
-    level: 'advanced',
+    title: "Type-safe Event Emitter",
+    level: "advanced",
     content:
-      'Crie um emissor de eventos type-safe que garante que listeners e eventos correspondam. ' +
-      'Use generics para mapear nomes de eventos para seus payloads.',
-    task: 'Crie um tipo EventMap e implemente um emitter.',
-    hint: 'type Events = { event: payload }',
+      "Crie um emissor de eventos type-safe que garante que listeners e eventos correspondam. " +
+      "Use generics para mapear nomes de eventos para seus payloads.",
+    task: "Crie um tipo EventMap e implemente um emitter.",
+    hint: "type Events = { event: payload }",
     starterCode: `type EventMap = {
   userJoined: { userId: number; name: string }
   userLeft: { userId: number }
@@ -1630,13 +1630,13 @@ emitter.emit("message", { from: "Bob", text: "Hello!" })`,
   },
   {
     id: 52,
-    title: 'Builder Pattern com Generics',
-    level: 'advanced',
+    title: "Builder Pattern com Generics",
+    level: "advanced",
     content:
-      'O padrão Builder permite construir objetos complexos passo a passo. ' +
-      'Com generics, podemos garantir que os métodos retornem o builder correto.',
-    task: 'Implemente um builder para criar usuários com validation.',
-    hint: 'Use this возврате para method chaining.',
+      "O padrão Builder permite construir objetos complexos passo a passo. " +
+      "Com generics, podemos garantir que os métodos retornem o builder correto.",
+    task: "Implemente um builder para criar usuários com validation.",
+    hint: "Use this возврате para method chaining.",
     starterCode: `class UserBuilder {
   private user: { name?: string; age?: number; email?: string } = {}
 
@@ -1676,13 +1676,13 @@ console.log("Built user:", JSON.stringify(user))`,
   },
   {
     id: 53,
-    title: 'Currying e Function Composition',
-    level: 'basic',
+    title: "Currying e Function Composition",
+    level: "basic",
     content:
-      'Currying transforma funções multi-arg em sequências de funções single-arg. ' +
-      'Composition combina funções para criar pipelines de dados.',
-    task: 'Crie funções curried e as compõe.',
-    hint: 'const add = (a: number) => (b: number) => a + b',
+      "Currying transforma funções multi-arg em sequências de funções single-arg. " +
+      "Composition combina funções para criar pipelines de dados.",
+    task: "Crie funções curried e as compõe.",
+    hint: "const add = (a: number) => (b: number) => a + b",
     starterCode: `const add = (a: number) => (b: number): number => a + b
 const multiply = (a: number) => (b: number): number => a * b
 const subtract = (a: number) => (b: number): number => a - b
@@ -1708,13 +1708,13 @@ console.log("pipe(add10, double, subtract5)(5):", processNumber(5))`,
   },
   {
     id: 54,
-    title: 'Type-safe API Client',
-    level: 'advanced',
+    title: "Type-safe API Client",
+    level: "advanced",
     content:
-      'Crie um cliente HTTP que infere tipos de resposta automaticamente. ' +
-      'Use generics para tipar endpoints e responses.',
-    task: 'Crie um cliente com tipos para GET e POST.',
-    hint: 'class ApiClient<T> { get<U>(url): Promise<U> }',
+      "Crie um cliente HTTP que infere tipos de resposta automaticamente. " +
+      "Use generics para tipar endpoints e responses.",
+    task: "Crie um cliente com tipos para GET e POST.",
+    hint: "class ApiClient<T> { get<U>(url): Promise<U> }",
     starterCode: `interface User {
   id: number
   name: string
@@ -1761,13 +1761,13 @@ createUser({ name: "Alice", email: "alice@example.com" })
   },
   {
     id: 55,
-    title: 'Flattened Union Types',
-    level: 'advanced',
+    title: "Flattened Union Types",
+    level: "advanced",
     content:
-      'Crie tipos union complexos e use distribuição para transformá-los. ' +
-      'Útil para criar unions de strings literais automaticamente.',
-    task: 'Crie uma union de métodos HTTP a partir de um array.',
-    hint: 'type Method = typeof methods[number]',
+      "Crie tipos union complexos e use distribuição para transformá-los. " +
+      "Útil para criar unions de strings literais automaticamente.",
+    task: "Crie uma union de métodos HTTP a partir de um array.",
+    hint: "type Method = typeof methods[number]",
     starterCode: `const methods = ["get", "post", "put", "delete", "patch"] as const
 
 type HttpMethod = typeof methods[number]
@@ -1808,13 +1808,13 @@ console.log("Variants:", variants)`,
   },
   {
     id: 56,
-    title: 'Immutable Update Patterns',
-    level: 'basic',
+    title: "Immutable Update Patterns",
+    level: "basic",
     content:
-      'Atualize objetos e arrays de forma imutável para evitar mutações acidentais. ' +
-      'Use spread operator e métodos que retornam novos arrays.',
-    task: 'Atualize um objeto aninhado de forma imutável.',
-    hint: 'Use spread para criar novas referências.',
+      "Atualize objetos e arrays de forma imutável para evitar mutações acidentais. " +
+      "Use spread operator e métodos que retornam novos arrays.",
+    task: "Atualize um objeto aninhado de forma imutável.",
+    hint: "Use spread para criar novas referências.",
     starterCode: `interface State {
   user: {
     profile: {
@@ -1864,13 +1864,13 @@ console.log("Same reference?", state === newState)`,
   },
   {
     id: 57,
-    title: 'Recursive Types',
-    level: 'advanced',
+    title: "Recursive Types",
+    level: "advanced",
     content:
-      'Types recursivos permitem representar estruturas hierárquicas como árvores e listas. ' +
-      'Útil para JSON, ASTs, e estruturas de dados aninhadas.',
-    task: 'Crie um tipo para uma árvore de diretórios.',
-    hint: 'interface TreeNode { name: string; children?: TreeNode[] }',
+      "Types recursivos permitem representar estruturas hierárquicas como árvores e listas. " +
+      "Útil para JSON, ASTs, e estruturas de dados aninhadas.",
+    task: "Crie um tipo para uma árvore de diretórios.",
+    hint: "interface TreeNode { name: string; children?: TreeNode[] }",
     starterCode: `interface TreeNode {
   name: string
   type: "file" | "folder"
@@ -1920,12 +1920,12 @@ console.log("JSON:", JSON.stringify(json, null, 2))`,
   },
   {
     id: 58,
-    title: 'Branded Types',
-    level: 'advanced',
+    title: "Branded Types",
+    level: "advanced",
     content:
       'Branded types adicionam "tags" a tipos existentes para区分 tipos primitivos. ' +
-      'Útil para IDs, currencies, e valores que precisam de validação semântica.',
-    task: 'Crie branded types para UserId e OrderId.',
+      "Útil para IDs, currencies, e valores que precisam de validação semântica.",
+    task: "Crie branded types para UserId e OrderId.",
     hint: 'type UserId = string & { __brand: "UserId" }',
     starterCode: `type UserId = string & { readonly __brand: "UserId" }
 type OrderId = string & { readonly __brand: "OrderId" }
@@ -1963,12 +1963,12 @@ console.log("Email:", email)`,
   },
   {
     id: 59,
-    title: 'Finite State Machines',
-    level: 'advanced',
+    title: "Finite State Machines",
+    level: "advanced",
     content:
-      'State machines definem um número finito de estados e transições entre eles. ' +
-      'TypeScript pode garantir que apenas transições válidas ocorram.',
-    task: 'Crie um state machine para um pedido.',
+      "State machines definem um número finito de estados e transições entre eles. " +
+      "TypeScript pode garantir que apenas transições válidas ocorram.",
+    task: "Crie um state machine para um pedido.",
     hint: 'type State = "pending" | "shipped" | "delivered"',
     starterCode: `type OrderState = "pending" | "confirmed" | "shipped" | "delivered" | "cancelled"
 
@@ -2023,12 +2023,12 @@ console.log("After deliver:", order.state)`,
   },
   {
     id: 60,
-    title: 'Weak Types e Type Gards',
-    level: 'advanced',
+    title: "Weak Types e Type Gards",
+    level: "advanced",
     content:
-      'Weak types são tipos com todas propriedades opcionais. ' +
-      'TypeScript tem verificação especial para garantir que pelo menos uma propriedade seja fornecida.',
-    task: 'Crie uma função que aceita apenas opções válidas.',
+      "Weak types são tipos com todas propriedades opcionais. " +
+      "TypeScript tem verificação especial para garantir que pelo menos uma propriedade seja fornecida.",
+    task: "Crie uma função que aceita apenas opções válidas.",
     hint: 'Use "at least one" constraint com keyof',
     starterCode: `type Options = {
   timeout?: number
@@ -2068,13 +2068,13 @@ console.log(processPoint({ name: "A", x: 10, y: 20 }))`,
   },
   {
     id: 61,
-    title: 'Proxy e Interceptação',
-    level: 'advanced',
+    title: "Proxy e Interceptação",
+    level: "advanced",
     content:
-      'Proxy permite interceptar operações como leitura, escrita, e invocação de métodos. ' +
-      'Útil para logging, validation, e lazy loading.',
-    task: 'Crie um proxy para validar propriedades.',
-    hint: 'new Proxy(target, { get, set })',
+      "Proxy permite interceptar operações como leitura, escrita, e invocação de métodos. " +
+      "Útil para logging, validation, e lazy loading.",
+    task: "Crie um proxy para validar propriedades.",
+    hint: "new Proxy(target, { get, set })",
     starterCode: `interface User {
   name: string
   age: number
@@ -2114,12 +2114,12 @@ try {
   },
   {
     id: 62,
-    title: 'Symbol e Metadata',
-    level: 'basic',
+    title: "Symbol e Metadata",
+    level: "basic",
     content:
-      'Symbols são valores únicos que podem servir como chaves de propriedades. ' +
+      "Symbols são valores únicos que podem servir como chaves de propriedades. " +
       'Úteis para criar propriedades "escondidas" e para reflection.',
-    task: 'Use Symbol para criar uma propriedade privada.',
+    task: "Use Symbol para criar uma propriedade privada.",
     hint: 'const privateKey = Symbol("private")',
     starterCode: `const nameKey = Symbol("name")
 const ageKey = Symbol("age")
@@ -2156,13 +2156,13 @@ console.log("Cached:", cache.get(key1))`,
   },
   {
     id: 63,
-    title: 'Asserts Type Guards',
-    level: 'advanced',
+    title: "Asserts Type Guards",
+    level: "advanced",
     content:
-      'Asserts type guards são funções que verificam e refinam tipos, ' +
-      'lançando erro se a condição não for atendida.',
-    task: 'Crie um assert que verifica se um valor é número positivo.',
-    hint: 'function assert(condition, message)',
+      "Asserts type guards são funções que verificam e refinam tipos, " +
+      "lançando erro se a condição não for atendida.",
+    task: "Crie um assert que verifica se um valor é número positivo.",
+    hint: "function assert(condition, message)",
     starterCode: `function assert(condition: boolean, message: string): asserts condition {
   if (!condition) {
     throw new Error(message)
@@ -2196,13 +2196,13 @@ console.log("Data length:", data.length)`,
   },
   {
     id: 64,
-    title: 'Infer com Conditional Types',
-    level: 'advanced',
+    title: "Infer com Conditional Types",
+    level: "advanced",
     content:
-      '`infer` extrai tipos de dentro de outros tipos. ' +
-      'Pode extrair tipos de funções, arrays, promises, e objetos.',
-    task: 'Extraia o tipo de elemento de um array.',
-    hint: 'type ArrayElement<T> = T extends (infer U)[] ? U : never',
+      "`infer` extrai tipos de dentro de outros tipos. " +
+      "Pode extrair tipos de funções, arrays, promises, e objetos.",
+    task: "Extraia o tipo de elemento de um array.",
+    hint: "type ArrayElement<T> = T extends (infer U)[] ? U : never",
     starterCode: `type ReturnTypeOf<T> = T extends (...args: any[]) => infer R ? R : never
 type ParametersOf<T> = T extends (...args: infer P) => any ? P : never
 type ArrayElement<T> = T extends (infer U)[] ? U : never
@@ -2235,13 +2235,13 @@ console.log("Promise:", pv)`,
   },
   {
     id: 65,
-    title: 'Type-safe Event Bus',
-    level: 'advanced',
+    title: "Type-safe Event Bus",
+    level: "advanced",
     content:
-      'Crie um event bus que garante type safety para eventos e handlers. ' +
-      'Use mapped types para derivar tipos de eventos.',
-    task: 'Implemente um event bus com subscribe e emit type-safe.',
-    hint: 'Use keyof e generics para inferência.',
+      "Crie um event bus que garante type safety para eventos e handlers. " +
+      "Use mapped types para derivar tipos de eventos.",
+    task: "Implemente um event bus com subscribe e emit type-safe.",
+    hint: "Use keyof e generics para inferência.",
     starterCode: `type Events = {
   login: { userId: number; timestamp: Date }
   logout: { userId: number }
@@ -2296,13 +2296,13 @@ bus.emit("purchase", { userId: 1, amount: 99.99 })`,
   },
   {
     id: 66,
-    title: 'Readonly Deep',
-    level: 'advanced',
+    title: "Readonly Deep",
+    level: "advanced",
     content:
-      'Crie um tipo que torna todas as propriedades aninhadas readonly recursivamente. ' +
-      'Útil para garantir imutabilidade em objetos complexos.',
-    task: 'Crie um tipo DeepReadonly<T>.',
-    hint: 'type DeepReadonly<T> = { readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K] }',
+      "Crie um tipo que torna todas as propriedades aninhadas readonly recursivamente. " +
+      "Útil para garantir imutabilidade em objetos complexos.",
+    task: "Crie um tipo DeepReadonly<T>.",
+    hint: "type DeepReadonly<T> = { readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K] }",
     starterCode: `type DeepReadonly<T> = {
   readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K]
 }
@@ -2338,13 +2338,13 @@ company.employees.push({ name: "New", role: "Manager" })`,
   },
   {
     id: 67,
-    title: 'Strict Null Checks em filters',
-    level: 'basic',
+    title: "Strict Null Checks em filters",
+    level: "basic",
     content:
-      'Filtrar arrays pode criar tipos union com undefined. ' +
-      'Aprenda a usar type guards para refiná-los corretamente.',
-    task: 'Filtre valores nulos e refine o tipo.',
-    hint: 'arr.filter((x): x is Type => x !== null)',
+      "Filtrar arrays pode criar tipos union com undefined. " +
+      "Aprenda a usar type guards para refiná-los corretamente.",
+    task: "Filtre valores nulos e refine o tipo.",
+    hint: "arr.filter((x): x is Type => x !== null)",
     starterCode: `interface User {
   id: number
   name: string
@@ -2380,12 +2380,12 @@ if (result) {
   },
   {
     id: 68,
-    title: 'Enum vs Union vs Const Object',
-    level: 'basic',
+    title: "Enum vs Union vs Const Object",
+    level: "basic",
     content:
-      'Compare enums, union types, e objetos const para entender quando usar cada um. ' +
-      'Cada abordagem tem prós e contras em termos de runtime e type safety.',
-    task: 'Converta um enum para union type e compare.',
+      "Compare enums, union types, e objetos const para entender quando usar cada um. " +
+      "Cada abordagem tem prós e contras em termos de runtime e type safety.",
+    task: "Converta um enum para union type e compare.",
     hint: 'type Direction = "N" | "S" | "E" | "W"',
     starterCode: `enum DirectionEnum {
   North = "N",
@@ -2420,13 +2420,13 @@ console.log("All approaches work!")`,
   },
   {
     id: 69,
-    title: 'Type-safe CSV Parser',
-    level: 'advanced',
+    title: "Type-safe CSV Parser",
+    level: "advanced",
     content:
-      'Crie um parser de CSV que infere tipos de colunas. ' +
-      'Use generics para mapear headers para tipos.',
-    task: 'Parse CSV e infira tipos das colunas.',
-    hint: 'function parseCSV<T>(csv: string): T[]',
+      "Crie um parser de CSV que infere tipos de colunas. " +
+      "Use generics para mapear headers para tipos.",
+    task: "Parse CSV e infira tipos das colunas.",
+    hint: "function parseCSV<T>(csv: string): T[]",
     starterCode: `interface User {
   id: number
   name: string
@@ -2470,13 +2470,13 @@ console.log("First user:", first)`,
   },
   {
     id: 70,
-    title: 'Schema Validation com Mapped Types',
-    level: 'advanced',
+    title: "Schema Validation com Mapped Types",
+    level: "advanced",
     content:
-      'Crie um schema validator que verifica objetos contra definições de tipos. ' +
-      'Use mapped types para transformar o schema em validadores.',
-    task: 'Valide um objeto contra um schema.',
-    hint: 'Use Record para mapear campos para validadores.',
+      "Crie um schema validator que verifica objetos contra definições de tipos. " +
+      "Use mapped types para transformar o schema em validadores.",
+    task: "Valide um objeto contra um schema.",
+    hint: "Use Record para mapear campos para validadores.",
     starterCode: `type Validator<T> = (value: unknown) => T
 
 type Schema<T> = {
@@ -2530,13 +2530,13 @@ console.log("Validated:", validated)`,
   },
   {
     id: 71,
-    title: 'Polymorphic this Types',
-    level: 'advanced',
+    title: "Polymorphic this Types",
+    level: "advanced",
     content:
-      'Use `this` como tipo de retorno para criar fluent APIs onde métodos retornam ' +
-      'a classe concreta, não a classe base. Útil para herança.',
-    task: 'Crie uma fluent API com this polimórfico.',
-    hint: 'class Builder { add(): this { } }',
+      "Use `this` como tipo de retorno para criar fluent APIs onde métodos retornam " +
+      "a classe concreta, não a classe base. Útil para herança.",
+    task: "Crie uma fluent API com this polimórfico.",
+    hint: "class Builder { add(): this { } }",
     starterCode: `class Builder {
   protected parts: string[] = []
 
@@ -2599,13 +2599,13 @@ console.log("Result:", calc.result())`,
   },
   {
     id: 72,
-    title: 'Tuple Types em Funções',
-    level: 'basic',
+    title: "Tuple Types em Funções",
+    level: "basic",
     content:
-      'Tuplas podem ser usadas para tipar parâmetros de funções com múltiplos valores. ' +
-      'Útil para funções que retornam múltiplos valores.',
-    task: 'Crie uma função que retorna nome e idade como tupla.',
-    hint: 'function getPerson(): [string, number] { }',
+      "Tuplas podem ser usadas para tipar parâmetros de funções com múltiplos valores. " +
+      "Útil para funções que retornam múltiplos valores.",
+    task: "Crie uma função que retorna nome e idade como tupla.",
+    hint: "function getPerson(): [string, number] { }",
     starterCode: `function getUser(): [string, number, boolean] {
   return ["Alice", 25, true]
 }
@@ -2642,13 +2642,13 @@ console.log("Parsed:", date)`,
   },
   {
     id: 73,
-    title: 'Interface vs Type Alias',
-    level: 'basic',
+    title: "Interface vs Type Alias",
+    level: "basic",
     content:
-      'Interfaces são melhores para objetos e classes, permitindo extends e merge. ' +
-      'Type aliases são melhores para unions, intersections, e tipos primitivos.',
-    task: 'Compare interface e type para o mesmo objeto.',
-    hint: 'interface para objetos, type para unions',
+      "Interfaces são melhores para objetos e classes, permitindo extends e merge. " +
+      "Type aliases são melhores para unions, intersections, e tipos primitivos.",
+    task: "Compare interface e type para o mesmo objeto.",
+    hint: "interface para objetos, type para unions",
     starterCode: `interface UserI {
   name: string
   age: number
@@ -2685,12 +2685,12 @@ console.log("Pair:", pair)`,
   },
   {
     id: 74,
-    title: 'Module Resolution',
-    level: 'advanced',
+    title: "Module Resolution",
+    level: "advanced",
     content:
-      'TypeScript resolve módulos de diferentes formas: classic, node, node16, nodenext. ' +
-      'Entenda as diferenças para configurar projetos corretamente.',
-    task: 'Configure paths e baseUrl para imports.',
+      "TypeScript resolve módulos de diferentes formas: classic, node, node16, nodenext. " +
+      "Entenda as diferenças para configurar projetos corretamente.",
+    task: "Configure paths e baseUrl para imports.",
     hint: 'Configure "baseUrl" e "paths" no tsconfig.json',
     starterCode: `// Simulando paths do tsconfig
 // {
@@ -2726,12 +2726,12 @@ console.log("Resolved @/components:", resolvePath("@/components"))`,
   },
   {
     id: 75,
-    title: 'Ambient Modules e Triple-Slash',
-    level: 'advanced',
+    title: "Ambient Modules e Triple-Slash",
+    level: "advanced",
     content:
-      'Use triple-slash directives para declarar dependências de módulos. ' +
-      'Útil para incluir tipos e módulos em arquivos compilados.',
-    task: 'Use triple-slash para declarar um módulo.',
+      "Use triple-slash directives para declarar dependências de módulos. " +
+      "Útil para incluir tipos e módulos em arquivos compilados.",
+    task: "Use triple-slash para declarar um módulo.",
     hint: '/// <reference types="node" />',
     starterCode: `/// <reference types="node" />
 
@@ -2754,13 +2754,13 @@ console.log("Ambient declarations loaded!")`,
   },
   {
     id: 76,
-    title: 'Union Narrowing com never',
-    level: 'advanced',
+    title: "Union Narrowing com never",
+    level: "advanced",
     content:
-      'Use `never` em unions para forçar o TypeScript a verificar todos os casos. ' +
-      'Útil em switch statements exaustivos.',
-    task: 'Crie um switch exaustivo.',
-    hint: 'default: const _: never = value',
+      "Use `never` em unions para forçar o TypeScript a verificar todos os casos. " +
+      "Útil em switch statements exaustivos.",
+    task: "Crie um switch exaustivo.",
+    hint: "default: const _: never = value",
     starterCode: `type Shape = 
   | { kind: "circle"; radius: number }
   | { kind: "square"; side: number }
@@ -2790,13 +2790,13 @@ shapes.forEach(s => console.log(\`Area: \${area(s).toFixed(2)}\`))`,
   },
   {
     id: 77,
-    title: 'Type-safe Event Listeners',
-    level: 'advanced',
+    title: "Type-safe Event Listeners",
+    level: "advanced",
     content:
-      'Crie funções que adicionam event listeners com type safety total. ' +
-      'O handler deve ter o tipo correto baseado no evento.',
-    task: 'Crie uma função addEventListener type-safe.',
-    hint: 'Use generics para inferir o handler type.',
+      "Crie funções que adicionam event listeners com type safety total. " +
+      "O handler deve ter o tipo correto baseado no evento.",
+    task: "Crie uma função addEventListener type-safe.",
+    hint: "Use generics para inferir o handler type.",
     starterCode: `type EventMap = {
   click: { x: number; y: number }
   keydown: { key: string }
@@ -2833,13 +2833,13 @@ on("focus", () => console.log("focused"))`,
   },
   {
     id: 78,
-    title: 'Intersection Types com Mixins',
-    level: 'advanced',
+    title: "Intersection Types com Mixins",
+    level: "advanced",
     content:
-      'Intersection types combinam múltiplos tipos em um. ' +
-      'Útil para adicionar funcionalidades via mixins ou criar tipos compuestos.',
-    task: 'Crie um tipo que é both Serializable e Validatable.',
-    hint: 'type T = Serializable & Validatable',
+      "Intersection types combinam múltiplos tipos em um. " +
+      "Útil para adicionar funcionalidades via mixins ou criar tipos compuestos.",
+    task: "Crie um tipo que é both Serializable e Validatable.",
+    hint: "type T = Serializable & Validatable",
     starterCode: `interface Serializable {
   toJSON(): Record<string, any>
 }
@@ -2894,13 +2894,13 @@ io.write("hello")`,
   },
   {
     id: 79,
-    title: 'Type-safe Console Methods',
-    level: 'basic',
+    title: "Type-safe Console Methods",
+    level: "basic",
     content:
-      'TypeScript não verifica console por padrão. ' +
-      'Crie wrappers type-safe para logging consistente.',
-    task: 'Crie funções de log type-safe.',
-    hint: 'function log<T>(message: T): void',
+      "TypeScript não verifica console por padrão. " +
+      "Crie wrappers type-safe para logging consistente.",
+    task: "Crie funções de log type-safe.",
+    hint: "function log<T>(message: T): void",
     starterCode: `function log<T>(message: T): void {
   console.log(\`[LOG] \${message}\`)
 }
@@ -2930,13 +2930,13 @@ console.log("Result:", result)`,
   },
   {
     id: 80,
-    title: 'Pattern Matching Simples',
-    level: 'basic',
+    title: "Pattern Matching Simples",
+    level: "basic",
     content:
-      'Implemente um pattern matching simples com generics. ' +
-      'Similar ao match em linguagens funcionais.',
-    task: 'Crie uma função match que execute patterns.',
-    hint: 'function match<T, R>(value: T, patterns: Record<T, R>): R',
+      "Implemente um pattern matching simples com generics. " +
+      "Similar ao match em linguagens funcionais.",
+    task: "Crie uma função match que execute patterns.",
+    hint: "function match<T, R>(value: T, patterns: Record<T, R>): R",
     starterCode: `function match<T, R>(value: T, patterns: Record<T, R>): R {
   if (value in patterns) {
     return patterns[value]
@@ -2981,13 +2981,13 @@ console.log(reduce({ type: "reset" }))`,
   },
   {
     id: 81,
-    title: 'Variadic Tuple Types',
-    level: 'advanced',
+    title: "Variadic Tuple Types",
+    level: "advanced",
     content:
-      'Variadic tuples permitem criar tipos que aceitam número variável de elementos. ' +
-      'Útil para concatenação de tipos e tail recursion.',
-    task: 'Crie um tipo que concatena tuplas.',
-    hint: 'type Concat<T extends any[], U extends any[]> = [...T, ...U]',
+      "Variadic tuples permitem criar tipos que aceitam número variável de elementos. " +
+      "Útil para concatenação de tipos e tail recursion.",
+    task: "Crie um tipo que concatena tuplas.",
+    hint: "type Concat<T extends any[], U extends any[]> = [...T, ...U]",
     starterCode: `type Concat<T extends any[], U extends any[]> = [...T, ...U]
 
 type A = Concat<[1, 2], [3, 4]>
@@ -3013,13 +3013,13 @@ const d: D = [2, 3]`,
   },
   {
     id: 82,
-    title: 'Awaited Type para Promises',
-    level: 'advanced',
+    title: "Awaited Type para Promises",
+    level: "advanced",
     content:
-      'O utility type `Awaited` extrai o tipo resolvido de uma Promise. ' +
-      'Funciona recursivamente para Promises aninhadas.',
-    task: 'Use Awaited para tipar o resultado de async functions.',
-    hint: 'type Result = Awaited<Promise<T>>',
+      "O utility type `Awaited` extrai o tipo resolvido de uma Promise. " +
+      "Funciona recursivamente para Promises aninhadas.",
+    task: "Use Awaited para tipar o resultado de async functions.",
+    hint: "type Result = Awaited<Promise<T>>",
     starterCode: `type Awaited<T> = T extends Promise<infer U> ? Awaited<U> : T
 
 async function fetchUser(): Promise<{ id: number; name: string }> {
@@ -3048,11 +3048,11 @@ getData()`,
   },
   {
     id: 83,
-    title: 'Brand Keys em Mapped Types',
-    level: 'advanced',
+    title: "Brand Keys em Mapped Types",
+    level: "advanced",
     content:
-      'Use template literal types em mapped types para criar transformações de chaves. ' +
-      'Útil para adicionar prefixos/sufixos ou converter convenções.',
+      "Use template literal types em mapped types para criar transformações de chaves. " +
+      "Útil para adicionar prefixos/sufixos ou converter convenções.",
     task: "Crie um mapped type que adiciona prefixo 'get' a métodos.",
     hint: "type WithGetters<T> = { [K in keyof T as 'get' + K]: () => T[K] }",
     starterCode: `type WithGetters<T> = {
@@ -3092,13 +3092,13 @@ setters.setName("Bob")`,
   },
   {
     id: 84,
-    title: 'Type-safe React-like setState',
-    level: 'advanced',
+    title: "Type-safe React-like setState",
+    level: "advanced",
     content:
-      'Implemente um hook de estado similar ao useState do React. ' +
-      'O setter deve permitir update parcial e inferir tipos corretamente.',
-    task: 'Crie um useState simplificado com tipos inferidos.',
-    hint: 'function useState<T>(initial: T): [() => T, (value: T | ((prev: T) => T)) => void]',
+      "Implemente um hook de estado similar ao useState do React. " +
+      "O setter deve permitir update parcial e inferir tipos corretamente.",
+    task: "Crie um useState simplificado com tipos inferidos.",
+    hint: "function useState<T>(initial: T): [() => T, (value: T | ((prev: T) => T)) => void]",
     starterCode: `function useState<T>(initial: T) {
   let state = initial
 
@@ -3131,13 +3131,13 @@ console.log("Final count:", count())`,
   },
   {
     id: 85,
-    title: 'Deep Partial Type',
-    level: 'advanced',
+    title: "Deep Partial Type",
+    level: "advanced",
     content:
-      'Partial torna propriedades de primeiro nível opcionais. ' +
-      'DeepPartial torna TODAS as propriedades aninhadas opcionais recursivamente.',
-    task: 'Crie um tipo DeepPartial<T>.',
-    hint: 'type DeepPartial<T> = { [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P] }',
+      "Partial torna propriedades de primeiro nível opcionais. " +
+      "DeepPartial torna TODAS as propriedades aninhadas opcionais recursivamente.",
+    task: "Crie um tipo DeepPartial<T>.",
+    hint: "type DeepPartial<T> = { [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P] }",
     starterCode: `type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
 }
@@ -3191,13 +3191,13 @@ function updateCompany(current: Company, updates: PartialCompany): Company {
   },
   {
     id: 86,
-    title: 'Extract Keys por Tipo de Valor',
-    level: 'advanced',
+    title: "Extract Keys por Tipo de Valor",
+    level: "advanced",
     content:
-      'Crie um tipo que extrai chaves de um objeto baseado no tipo de seus valores. ' +
-      'Útil para encontrar campos de um certo tipo.',
-    task: 'Extraia chaves cujos valores são do tipo string.',
-    hint: 'type KeysOfType<T, U> = { [K in keyof T]: T[K] extends U ? K : never }[keyof T]',
+      "Crie um tipo que extrai chaves de um objeto baseado no tipo de seus valores. " +
+      "Útil para encontrar campos de um certo tipo.",
+    task: "Extraia chaves cujos valores são do tipo string.",
+    hint: "type KeysOfType<T, U> = { [K in keyof T]: T[K] extends U ? K : never }[keyof T]",
     starterCode: `type KeysOfType<T, U> = {
   [K in keyof T]: T[K] extends U ? K : never
 }[keyof T]
@@ -3240,12 +3240,12 @@ console.log("Numbers:", numbers)`,
   },
   {
     id: 87,
-    title: 'Type-safe Redux-like Reducer',
-    level: 'advanced',
+    title: "Type-safe Redux-like Reducer",
+    level: "advanced",
     content:
-      'Implemente um reducer type-safe similar ao Redux. ' +
-      'O tipo de ação determina quais payloads são válidos.',
-    task: 'Crie um reducer com actions type-safe.',
+      "Implemente um reducer type-safe similar ao Redux. " +
+      "O tipo de ação determina quais payloads são válidos.",
+    task: "Crie um reducer com actions type-safe.",
     hint: 'type Action = { type: "TYPE"; payload: T }',
     starterCode: `type Action =
   | { type: "increment"; payload: number }
@@ -3296,13 +3296,13 @@ console.log("After reset:", state.count)`,
   },
   {
     id: 88,
-    title: 'Constructor Parameters Type',
-    level: 'advanced',
+    title: "Constructor Parameters Type",
+    level: "advanced",
     content:
-      '`ConstructorParameters<T>` extrai os tipos de parâmetros do construtor de T. ' +
-      'Útil para criar factories e injeção de dependência.',
-    task: 'Use ConstructorParameters para criar uma factory.',
-    hint: 'type CtorParams = ConstructorParameters<typeof MyClass>',
+      "`ConstructorParameters<T>` extrai os tipos de parâmetros do construtor de T. " +
+      "Útil para criar factories e injeção de dependência.",
+    task: "Use ConstructorParameters para criar uma factory.",
+    hint: "type CtorParams = ConstructorParameters<typeof MyClass>",
     starterCode: `type ConstructorParameters<T extends new (...args: any[]) => any> =
   T extends new (...args: infer P) => any ? P : never
 
@@ -3343,13 +3343,13 @@ console.log("Product:", product.name, product.price)`,
   },
   {
     id: 89,
-    title: 'Optional Keys e Required Keys',
-    level: 'advanced',
+    title: "Optional Keys e Required Keys",
+    level: "advanced",
     content:
-      '`Required<T>` torna todas as propriedades obrigatórias. ' +
-      '`Optional<T>` (custom) pode fazer o oposto, ou criar tipos que têm apenas opcionais.',
-    task: 'Extraia chaves opcionais e obrigatórias separadamente.',
-    hint: 'type OptionalKeys<T> = { [K in keyof T]: T extends { [K]: T[K] } ? never : K }[keyof T]',
+      "`Required<T>` torna todas as propriedades obrigatórias. " +
+      "`Optional<T>` (custom) pode fazer o oposto, ou criar tipos que têm apenas opcionais.",
+    task: "Extraia chaves opcionais e obrigatórias separadamente.",
+    hint: "type OptionalKeys<T> = { [K in keyof T]: T extends { [K]: T[K] } ? never : K }[keyof T]",
     starterCode: `type OptionalKeys<T> = {
   [K in keyof T]: {} extends Pick<T, K> ? K : never
 }[keyof T]
@@ -3387,13 +3387,13 @@ console.log("Validation:", result)`,
   },
   {
     id: 90,
-    title: 'Type-safe Event Bus Final',
-    level: 'advanced',
+    title: "Type-safe Event Bus Final",
+    level: "advanced",
     content:
-      'Combine tudo: generics, conditional types, e mapped types ' +
-      'para criar um event bus completamente type-safe.',
-    task: 'Crie um event bus com inferred handlers.',
-    hint: 'Use infer para extrair tipos de eventos.',
+      "Combine tudo: generics, conditional types, e mapped types " +
+      "para criar um event bus completamente type-safe.",
+    task: "Crie um event bus com inferred handlers.",
+    hint: "Use infer para extrair tipos de eventos.",
     starterCode: `type EventMap = Record<string, any>
 
 type EventReceiver<T> = (params: T) => void
@@ -3445,13 +3445,13 @@ bus.emit("purchase", { amount: 99.99, item: "E-book" })`,
   },
   {
     id: 91,
-    title: 'Omit vs Exclude',
-    level: 'basic',
+    title: "Omit vs Exclude",
+    level: "basic",
     content:
-      '`Omit<T, K>` remove propriedades de um tipo objeto. ' +
-      '`Exclude<T, U>` remove tipos de uma union. Entenda a diferença.',
-    task: 'Use Omit para objeto e Exclude para union.',
-    hint: 'Omit para objetos, Exclude para unions',
+      "`Omit<T, K>` remove propriedades de um tipo objeto. " +
+      "`Exclude<T, U>` remove tipos de uma union. Entenda a diferença.",
+    task: "Use Omit para objeto e Exclude para union.",
+    hint: "Omit para objetos, Exclude para unions",
     starterCode: `interface User {
   id: number
   name: string
@@ -3485,13 +3485,13 @@ console.log("Primary colors:", primaries)`,
   },
   {
     id: 92,
-    title: 'Object.entries e Object.keys Tipados',
-    level: 'basic',
+    title: "Object.entries e Object.keys Tipados",
+    level: "basic",
     content:
-      'Object.entries e Object.keys retornam `string[]` por padrão. ' +
-      'Use assertion ou generics para tipá-los corretamente.',
-    task: 'Itere sobre um objeto com tipos corretos.',
-    hint: 'Use as Array<[keyof T, T[keyof T]]>',
+      "Object.entries e Object.keys retornam `string[]` por padrão. " +
+      "Use assertion ou generics para tipá-los corretamente.",
+    task: "Itere sobre um objeto com tipos corretos.",
+    hint: "Use as Array<[keyof T, T[keyof T]]>",
     starterCode: `interface User {
   id: number
   name: string
@@ -3526,13 +3526,13 @@ typedEntries({ a: 1, b: 2, c: 3 }).forEach(([k, v]) => {
   },
   {
     id: 93,
-    title: 'Strict Property Initialization',
-    level: 'basic',
+    title: "Strict Property Initialization",
+    level: "basic",
     content:
-      'Com strictPropertyInitialization, propriedades de classe devem ser inicializadas ' +
-      'no construtor ou com initialization shorthand.',
-    task: 'Inicialize propriedades corretamente.',
-    hint: 'Use constructor ou initialization shorthand.',
+      "Com strictPropertyInitialization, propriedades de classe devem ser inicializadas " +
+      "no construtor ou com initialization shorthand.",
+    task: "Inicialize propriedades corretamente.",
+    hint: "Use constructor ou initialization shorthand.",
     starterCode: `class User {
   name: string
   age: number
@@ -3577,13 +3577,13 @@ console.log("Name:", opt.name)`,
   },
   {
     id: 94,
-    title: 'Type-safe Fetch Wrapper',
-    level: 'advanced',
+    title: "Type-safe Fetch Wrapper",
+    level: "advanced",
     content:
-      'Crie um wrapper type-safe para fetch que infere o tipo de resposta. ' +
-      'Suporta JSON, texto, e verificação de status.',
-    task: 'Crie uma função fetchJson type-safe.',
-    hint: 'async function fetchJson<T>(url: string): Promise<T>',
+      "Crie um wrapper type-safe para fetch que infere o tipo de resposta. " +
+      "Suporta JSON, texto, e verificação de status.",
+    task: "Crie uma função fetchJson type-safe.",
+    hint: "async function fetchJson<T>(url: string): Promise<T>",
     starterCode: `async function fetchJson<T>(
   url: string,
   options?: RequestInit
@@ -3634,13 +3634,13 @@ main()`,
   },
   {
     id: 95,
-    title: 'Type-safe Route Handler',
-    level: 'advanced',
+    title: "Type-safe Route Handler",
+    level: "advanced",
     content:
-      'Crie um router type-safe onde cada rota tem seu handler com tipos específicos. ' +
-      'O handler recebe apenas os parâmetros definidos para aquela rota.',
-    task: 'Crie handlers de rota type-safe.',
-    hint: 'Use Record para mapear rotas para handlers.',
+      "Crie um router type-safe onde cada rota tem seu handler com tipos específicos. " +
+      "O handler recebe apenas os parâmetros definidos para aquela rota.",
+    task: "Crie handlers de rota type-safe.",
+    hint: "Use Record para mapear rotas para handlers.",
     starterCode: `type RouteHandler<T = any> = (params: T) => string | Promise<string>
 
 interface Route<T = any> {
@@ -3695,12 +3695,12 @@ console.log(matchRoute("/posts/456?draft=true", routes))`,
   },
   {
     id: 96,
-    title: 'Generic Record Factory',
-    level: 'advanced',
+    title: "Generic Record Factory",
+    level: "advanced",
     content:
-      'Crie uma factory que gera objetos tipados com métodos úteis. ' +
-      'O tipo de retorno deve ser completamente inferido.',
-    task: 'Crie uma factory para gerar objetos com IDs.',
+      "Crie uma factory que gera objetos tipados com métodos úteis. " +
+      "O tipo de retorno deve ser completamente inferido.",
+    task: "Crie uma factory para gerar objetos com IDs.",
     hint: 'function create<T>(data: Omit<T, "id">): T & { id: string }',
     starterCode: `function createEntity<T extends { name: string }>(
   data: T
@@ -3756,13 +3756,13 @@ console.log("Numbers:", [...numbers])`,
   },
   {
     id: 97,
-    title: 'Reverse Engineering Types',
-    level: 'advanced',
+    title: "Reverse Engineering Types",
+    level: "advanced",
     content:
-      'Dado um objeto, derive seu tipo automaticamente. ' +
-      'Use `typeof` para criar tipos a partir de valores.',
-    task: 'Use typeof para criar tipos a partir de objetos.',
-    hint: 'type T = typeof myObject',
+      "Dado um objeto, derive seu tipo automaticamente. " +
+      "Use `typeof` para criar tipos a partir de valores.",
+    task: "Use typeof para criar tipos a partir de objetos.",
+    hint: "type T = typeof myObject",
     starterCode: `const user = {
   id: 1,
   name: "Alice",
@@ -3812,12 +3812,12 @@ type Method = typeof constObj.GET | typeof constObj.POST`,
   },
   {
     id: 98,
-    title: 'Chaining Optionals',
-    level: 'basic',
+    title: "Chaining Optionals",
+    level: "basic",
     content:
-      'Ao acessar propriedades opcionais aninhadas, você pode usar optional chaining ' +
-      'para evitar erros. Aprenda a lidar com undefined em profundidades.',
-    task: 'Acesse propriedades profundas com safety.',
+      "Ao acessar propriedades opcionais aninhadas, você pode usar optional chaining " +
+      "para evitar erros. Aprenda a lidar com undefined em profundidades.",
+    task: "Acesse propriedades profundas com safety.",
     hint: 'user?.address?.city ?? "unknown"',
     starterCode: `interface User {
   name: string
@@ -3861,13 +3861,13 @@ console.log("getCity:", getCity(user1), getCity(user2))`,
   },
   {
     id: 99,
-    title: 'Type-safe Event-Driven Architecture',
-    level: 'advanced',
+    title: "Type-safe Event-Driven Architecture",
+    level: "advanced",
     content:
-      'Crie um sistema de eventos onde emissores e listeners são type-safe. ' +
-      'O tipo de evento determina os dados disponíveis.',
-    task: 'Implemente subscribe/publish com tipos derivados.',
-    hint: 'Use generic para relacionar evento e dados.',
+      "Crie um sistema de eventos onde emissores e listeners são type-safe. " +
+      "O tipo de evento determina os dados disponíveis.",
+    task: "Implemente subscribe/publish com tipos derivados.",
+    hint: "Use generic para relacionar evento e dados.",
     starterCode: `type EventMap = {
   userCreated: { id: number; email: string }
   userUpdated: { id: number; changes: Record<string, any> }
@@ -3915,14 +3915,14 @@ emitter.emit("userUpdated", { id: 1, changes: { name: "Alice", age: 26 } })`,
   },
   {
     id: 100,
-    title: 'Conclusão: Próximos Passos',
-    level: 'basic',
+    title: "Conclusão: Próximos Passos",
+    level: "basic",
     content:
-      'Parabéns por completar 100 lições de TypeScript! Agora você tem uma base sólida. ' +
-      'Próximos passos: contribua com projetos open source, explore bibliotecas como React/Next.js, ' +
-      'e pratique com desafios de código.',
-    task: 'Revise o que aprendeu e continue praticando!',
-    hint: 'Prática leva à maestria!',
+      "Parabéns por completar 100 lições de TypeScript! Agora você tem uma base sólida. " +
+      "Próximos passos: contribua com projetos open source, explore bibliotecas como React/Next.js, " +
+      "e pratique com desafios de código.",
+    task: "Revise o que aprendeu e continue praticando!",
+    hint: "Prática leva à maestria!",
     starterCode: `console.log("🎉 Parabéns!")
 console.log("")
 console.log("Você completou 100 lições de TypeScript!")
@@ -3950,13 +3950,13 @@ console.log("Boa jornada! 🚀")`,
   },
   {
     id: 101,
-    title: ' typeof com Objetos',
-    level: 'medium',
+    title: " typeof com Objetos",
+    level: "medium",
     content:
-      'Use `typeof` para obter o tipo de uma variável ou objeto. ' +
-      'Isso cria um tipo automaticamente baseado no valor.',
-    task: 'Obtenha o tipo de um objeto usando typeof.',
-    hint: 'type T = typeof myObject',
+      "Use `typeof` para obter o tipo de uma variável ou objeto. " +
+      "Isso cria um tipo automaticamente baseado no valor.",
+    task: "Obtenha o tipo de um objeto usando typeof.",
+    hint: "type T = typeof myObject",
     starterCode: `const user = {
   name: "Alice",
   age: 25,
@@ -3975,13 +3975,13 @@ console.log("New user:", newUser)`,
   },
   {
     id: 102,
-    title: ' Operador && e ||',
-    level: 'medium',
+    title: " Operador && e ||",
+    level: "medium",
     content:
-      'Operadores lógicos funcionam como em JavaScript. ' +
-      'Aprenda a usá-los com tipos condicionais.',
-    task: 'Use operadores lógicos em expressões.',
-    hint: 'const result = a && b || c',
+      "Operadores lógicos funcionam como em JavaScript. " +
+      "Aprenda a usá-los com tipos condicionais.",
+    task: "Use operadores lógicos em expressões.",
+    hint: "const result = a && b || c",
     starterCode: `const a = true
 const b = false
 const c = true
@@ -4000,13 +4000,13 @@ console.log("OR result:", orResult)`,
   },
   {
     id: 103,
-    title: ' Ternary Operator',
-    level: 'medium',
+    title: " Ternary Operator",
+    level: "medium",
     content:
-      'O operador ternário `condição ? valor1 : valor2` é útil para condições simples. ' +
-      'Também pode ser usado em tipos com conditional types.',
-    task: 'Use o operador ternário para escolher valores.',
-    hint: 'const result = condition ? value1 : value2',
+      "O operador ternário `condição ? valor1 : valor2` é útil para condições simples. " +
+      "Também pode ser usado em tipos com conditional types.",
+    task: "Use o operador ternário para escolher valores.",
+    hint: "const result = condition ? value1 : value2",
     starterCode: `const age = 18
 const status = age >= 18 ? "adult" : "minor"
 console.log("Status:", status)
@@ -4024,13 +4024,13 @@ console.log(hasItems)`,
   },
   {
     id: 104,
-    title: ' Arrow Functions',
-    level: 'medium',
+    title: " Arrow Functions",
+    level: "medium",
     content:
-      'Arrow functions são funções anônimas mais sintéticas. ' +
-      'TypeScript infere tipos de parâmetros e retorno.',
-    task: 'Crie arrow functions tipadas.',
-    hint: 'const fn = (x: number): number => x * 2',
+      "Arrow functions são funções anônimas mais sintéticas. " +
+      "TypeScript infere tipos de parâmetros e retorno.",
+    task: "Crie arrow functions tipadas.",
+    hint: "const fn = (x: number): number => x * 2",
     starterCode: `const add = (a: number, b: number): number => a + b
 const greet = (name: string): string => \`Hello, \${name}!\`
 const double = (x: number) => x * 2
@@ -4048,13 +4048,13 @@ console.log(process(numbers, double))`,
   },
   {
     id: 105,
-    title: ' Spread em Objetos',
-    level: 'medium',
+    title: " Spread em Objetos",
+    level: "medium",
     content:
-      'O spread operator `...` copia propriedades de objetos. ' +
-      'Útil para criar cópias e mesclar objetos.',
-    task: 'Use spread para mesclar objetos.',
-    hint: 'const merged = { ...obj1, ...obj2 }',
+      "O spread operator `...` copia propriedades de objetos. " +
+      "Útil para criar cópias e mesclar objetos.",
+    task: "Use spread para mesclar objetos.",
+    hint: "const merged = { ...obj1, ...obj2 }",
     starterCode: `const defaults = { theme: "dark", language: "pt-BR" }
 const userPrefs = { theme: "light" }
 
@@ -4072,13 +4072,13 @@ console.log("Full:", full)`,
   },
   {
     id: 106,
-    title: ' Spread em Arrays',
-    level: 'medium',
+    title: " Spread em Arrays",
+    level: "medium",
     content:
-      'Spread em arrays cria novas cópias ou concatena arrays. ' +
-      'Não modifica o array original (imutabilidade).',
-    task: 'Use spread para manipular arrays.',
-    hint: 'const combined = [...arr1, ...arr2]',
+      "Spread em arrays cria novas cópias ou concatena arrays. " +
+      "Não modifica o array original (imutabilidade).",
+    task: "Use spread para manipular arrays.",
+    hint: "const combined = [...arr1, ...arr2]",
     starterCode: `const arr1 = [1, 2, 3]
 const arr2 = [4, 5, 6]
 
@@ -4097,13 +4097,13 @@ console.log("Doubled:", updated)`,
   },
   {
     id: 107,
-    title: ' Destructuring de Objetos',
-    level: 'medium',
+    title: " Destructuring de Objetos",
+    level: "medium",
     content:
-      'Destructuring extrai propriedades de objetos em variáveis. ' +
-      'Pode usar valores padrão para propriedades opcionais.',
-    task: 'Extraia propriedades de um objeto.',
-    hint: 'const { name, age } = user',
+      "Destructuring extrai propriedades de objetos em variáveis. " +
+      "Pode usar valores padrão para propriedades opcionais.",
+    task: "Extraia propriedades de um objeto.",
+    hint: "const { name, age } = user",
     starterCode: `const user = {
   name: "Alice",
   age: 25,
@@ -4124,13 +4124,13 @@ console.log(greet(user))`,
   },
   {
     id: 108,
-    title: ' Destructuring de Arrays',
-    level: 'medium',
+    title: " Destructuring de Arrays",
+    level: "medium",
     content:
-      'Destructuring de arrays usa posição, não nomes. ' +
-      'Pode ignorar elementos ou usar rest parameters.',
-    task: 'Extraia elementos de um array por posição.',
-    hint: 'const [first, second] = arr',
+      "Destructuring de arrays usa posição, não nomes. " +
+      "Pode ignorar elementos ou usar rest parameters.",
+    task: "Extraia elementos de um array por posição.",
+    hint: "const [first, second] = arr",
     starterCode: `const coords = [10, 20, 30]
 const [x, y, z] = coords
 console.log("Coords:", x, y, z)
@@ -4150,13 +4150,13 @@ console.log("Sum:", sum([5, 3]))`,
   },
   {
     id: 109,
-    title: ' Array Methods - map',
-    level: 'medium',
+    title: " Array Methods - map",
+    level: "medium",
     content:
-      'map cria um novo array transformando cada elemento. ' +
-      'TypeScript infere o tipo do array resultante.',
-    task: 'Use map para transformar um array.',
-    hint: 'const doubled = nums.map(n => n * 2)',
+      "map cria um novo array transformando cada elemento. " +
+      "TypeScript infere o tipo do array resultante.",
+    task: "Use map para transformar um array.",
+    hint: "const doubled = nums.map(n => n * 2)",
     starterCode: `const numbers = [1, 2, 3, 4, 5]
 
 const doubled = numbers.map(n => n * 2)
@@ -4187,13 +4187,13 @@ console.log("Birthdays:", birthdays)`,
   },
   {
     id: 110,
-    title: ' Array Methods - filter',
-    level: 'medium',
+    title: " Array Methods - filter",
+    level: "medium",
     content:
-      'filter cria um novo array com elementos que passam no teste. ' +
-      'TypeScript refina o tipo automaticamente.',
-    task: 'Filtre um array usando filter.',
-    hint: 'const evens = nums.filter(n => n % 2 === 0)',
+      "filter cria um novo array com elementos que passam no teste. " +
+      "TypeScript refina o tipo automaticamente.",
+    task: "Filtre um array usando filter.",
+    hint: "const evens = nums.filter(n => n % 2 === 0)",
     starterCode: `const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const evens = numbers.filter(n => n % 2 === 0)
@@ -4225,13 +4225,11 @@ console.log("Under 1000:", affordable)`,
   },
   {
     id: 111,
-    title: ' Array Methods - reduce',
-    level: 'medium',
-    content:
-      'reduce reduz um array a um único valor. ' +
-      'O acumulador pode ser qualquer tipo.',
-    task: 'Some todos os números de um array.',
-    hint: 'const sum = arr.reduce((acc, n) => acc + n, 0)',
+    title: " Array Methods - reduce",
+    level: "medium",
+    content: "reduce reduz um array a um único valor. " + "O acumulador pode ser qualquer tipo.",
+    task: "Some todos os números de um array.",
+    hint: "const sum = arr.reduce((acc, n) => acc + n, 0)",
     starterCode: `const numbers = [1, 2, 3, 4, 5]
 
 const sum = numbers.reduce((acc, n) => acc + n, 0)
@@ -4265,13 +4263,13 @@ console.log("By age:", byAge)`,
   },
   {
     id: 112,
-    title: ' Array Methods - find e findIndex',
-    level: 'medium',
+    title: " Array Methods - find e findIndex",
+    level: "medium",
     content:
-      'find retorna o primeiro elemento que satisfaz a condição. ' +
-      'findIndex retorna sua posição.',
-    task: 'Encontre um elemento no array.',
-    hint: 'const found = arr.find(x => x.id === 1)',
+      "find retorna o primeiro elemento que satisfaz a condição. " +
+      "findIndex retorna sua posição.",
+    task: "Encontre um elemento no array.",
+    hint: "const found = arr.find(x => x.id === 1)",
     starterCode: `const numbers = [10, 20, 30, 40, 50]
 
 const found = numbers.find(n => n > 25)
@@ -4299,13 +4297,13 @@ console.log("Index:", userIndex)`,
   },
   {
     id: 113,
-    title: ' Array Methods - some e every',
-    level: 'medium',
+    title: " Array Methods - some e every",
+    level: "medium",
     content:
-      'some retorna true se algum elemento passar no teste. ' +
-      'every retorna true se todos passarem.',
-    task: 'Verifique condições em arrays.',
-    hint: 'const hasEvens = arr.some(n => n % 2 === 0)',
+      "some retorna true se algum elemento passar no teste. " +
+      "every retorna true se todos passarem.",
+    task: "Verifique condições em arrays.",
+    hint: "const hasEvens = arr.some(n => n % 2 === 0)",
     starterCode: `const numbers = [1, 3, 5, 7, 9]
 
 const hasEvens = numbers.some(n => n % 2 === 0)
@@ -4336,13 +4334,13 @@ console.log("All available:", allAvailable)`,
   },
   {
     id: 114,
-    title: ' Array Methods - includes e indexOf',
-    level: 'medium',
+    title: " Array Methods - includes e indexOf",
+    level: "medium",
     content:
-      'includes verifica se um valor existe no array. ' +
-      'indexOf retorna a posição ou -1 se não encontrar.',
-    task: 'Verifique se um valor existe no array.',
-    hint: 'const exists = arr.includes(value)',
+      "includes verifica se um valor existe no array. " +
+      "indexOf retorna a posição ou -1 se não encontrar.",
+    task: "Verifique se um valor existe no array.",
+    hint: "const exists = arr.includes(value)",
     starterCode: `const fruits = ["apple", "banana", "orange"]
 
 console.log("Has banana:", fruits.includes("banana"))
@@ -4367,13 +4365,13 @@ console.log("Unique:", unique([1, 2, 2, 3, 3, 3]))`,
   },
   {
     id: 115,
-    title: ' Array Methods - sort',
-    level: 'medium',
+    title: " Array Methods - sort",
+    level: "medium",
     content:
-      'sort ordena elementos no lugar. ' +
-      'Para ordenação correta, forneça uma função comparadora.',
-    task: 'Ordene um array de números.',
-    hint: 'const sorted = arr.sort((a, b) => a - b)',
+      "sort ordena elementos no lugar. " +
+      "Para ordenação correta, forneça uma função comparadora.",
+    task: "Ordene um array de números.",
+    hint: "const sorted = arr.sort((a, b) => a - b)",
     starterCode: `const numbers = [5, 2, 8, 1, 9]
 
 const ascending = [...numbers].sort((a, b) => a - b)
@@ -4401,13 +4399,13 @@ console.log("By age:", byAge.map(u => u.name))`,
   },
   {
     id: 116,
-    title: ' Array Methods - slice e splice',
-    level: 'medium',
+    title: " Array Methods - slice e splice",
+    level: "medium",
     content:
-      'slice retorna uma cópia de uma porção do array. ' +
-      'splice remove/substitui elementos no lugar.',
-    task: 'Extraia e modifique arrays.',
-    hint: 'const portion = arr.slice(1, 3)',
+      "slice retorna uma cópia de uma porção do array. " +
+      "splice remove/substitui elementos no lugar.",
+    task: "Extraia e modifique arrays.",
+    hint: "const portion = arr.slice(1, 3)",
     starterCode: `const numbers = [0, 1, 2, 3, 4, 5]
 
 const portion = numbers.slice(1, 4)
@@ -4432,13 +4430,11 @@ console.log("After insert:", arr2)`,
   },
   {
     id: 117,
-    title: ' Array Methods - flat',
-    level: 'medium',
-    content:
-      'flat nivela arrays aninhados. ' +
-      'flatMap combina map e flat em uma operação.',
-    task: 'Nivele arrays aninhados.',
-    hint: 'const flat = nested.flat()',
+    title: " Array Methods - flat",
+    level: "medium",
+    content: "flat nivela arrays aninhados. " + "flatMap combina map e flat em uma operação.",
+    task: "Nivele arrays aninhados.",
+    hint: "const flat = nested.flat()",
     starterCode: `const nested = [1, [2, 3], [4, [5, 6]]]
 
 const flat1 = nested.flat()
@@ -4460,12 +4456,12 @@ console.log("Doubled + 1:", doubledAndPlusOne)`,
   },
   {
     id: 118,
-    title: ' String Methods',
-    level: 'medium',
+    title: " String Methods",
+    level: "medium",
     content:
-      'Strings têm métodos úteis como split, join, trim, etc. ' +
-      'TypeScript os trata como métodos de string.',
-    task: 'Manipule uma string.',
+      "Strings têm métodos úteis como split, join, trim, etc. " +
+      "TypeScript os trata como métodos de string.",
+    task: "Manipule uma string.",
     hint: "str.split(',').join('-')",
     starterCode: `const text = "  Hello, World!  "
 
@@ -4489,13 +4485,13 @@ console.log("Slice:", email.slice(0, 4))`,
   },
   {
     id: 119,
-    title: ' Math e Number',
-    level: 'medium',
+    title: " Math e Number",
+    level: "medium",
     content:
-      'Math fornece funções matemáticas úteis. ' +
-      'Number tem constantes e métodos para converter.',
-    task: 'Use Math e Number para operações.',
-    hint: 'Math.floor(Math.random() * 10)',
+      "Math fornece funções matemáticas úteis. " +
+      "Number tem constantes e métodos para converter.",
+    task: "Use Math e Number para operações.",
+    hint: "Math.floor(Math.random() * 10)",
     starterCode: `console.log("Round:", Math.round(4.5))
 console.log("Floor:", Math.floor(4.9))
 console.log("Ceil:", Math.ceil(4.1))
@@ -4516,13 +4512,11 @@ console.log("IsFinite:", Number.isFinite(Infinity))`,
   },
   {
     id: 120,
-    title: ' Date',
-    level: 'medium',
-    content:
-      'Date representa datas e tempos. ' +
-      'Métodos obtêm componentes individuais.',
-    task: 'Trabalhe com datas.',
-    hint: 'const now = new Date()',
+    title: " Date",
+    level: "medium",
+    content: "Date representa datas e tempos. " + "Métodos obtêm componentes individuais.",
+    task: "Trabalhe com datas.",
+    hint: "const now = new Date()",
     starterCode: `const now = new Date()
 console.log("Now:", now)
 console.log("ISO:", now.toISOString())
@@ -4543,13 +4537,12 @@ console.log("After week:", afterWeek.toDateString())`,
   },
   {
     id: 121,
-    title: ' JSON parse e stringify',
-    level: 'medium',
+    title: " JSON parse e stringify",
+    level: "medium",
     content:
-      'JSON.stringify converte objetos para string. ' +
-      'JSON.parse converte string para objeto.',
-    task: 'Serialize e deserialize JSON.',
-    hint: 'JSON.parse(jsonString)',
+      "JSON.stringify converte objetos para string. " + "JSON.parse converte string para objeto.",
+    task: "Serialize e deserialize JSON.",
+    hint: "JSON.parse(jsonString)",
     starterCode: `const obj = {
   name: "Alice",
   age: 25,
@@ -4571,13 +4564,13 @@ console.log("User:", user.name)`,
   },
   {
     id: 122,
-    title: ' Promise.all e Promise.race',
-    level: 'medium',
+    title: " Promise.all e Promise.race",
+    level: "medium",
     content:
-      'Promise.all espera todas as promises resolverem. ' +
-      'Promise.race retorna a primeira que resolver.',
-    task: 'Trabalhe com múltiplas promises.',
-    hint: 'Promise.all([p1, p2])',
+      "Promise.all espera todas as promises resolverem. " +
+      "Promise.race retorna a primeira que resolver.",
+    task: "Trabalhe com múltiplas promises.",
+    hint: "Promise.all([p1, p2])",
     starterCode: `const p1 = Promise.resolve(1)
 const p2 = Promise.resolve(2)
 const p3 = Promise.resolve(3)
@@ -4602,13 +4595,13 @@ Promise.allSettled([fail, success]).then(results => {
   },
   {
     id: 123,
-    title: ' try/catch/finally',
-    level: 'medium',
+    title: " try/catch/finally",
+    level: "medium",
     content:
-      'try executa código, catch trata erros, finally executa sempre. ' +
-      'TypeScript infere o tipo do erro como unknown.',
-    task: 'Trate erros com try/catch.',
-    hint: 'try { } catch (e) { }',
+      "try executa código, catch trata erros, finally executa sempre. " +
+      "TypeScript infere o tipo do erro como unknown.",
+    task: "Trate erros com try/catch.",
+    hint: "try { } catch (e) { }",
     starterCode: `function divide(a: number, b: number): number {
   if (b === 0) throw new Error("Division by zero")
   return a / b
@@ -4636,10 +4629,10 @@ console.log(safeParse("invalid"))`,
   },
   {
     id: 124,
-    title: ' throw e Error',
-    level: 'medium',
-    content: 'throw lança exceções. ' + 'O tipo Error tem message e name.',
-    task: 'Lance erros personalizados.',
+    title: " throw e Error",
+    level: "medium",
+    content: "throw lança exceções. " + "O tipo Error tem message e name.",
+    task: "Lance erros personalizados.",
     hint: "throw new Error('message')",
     starterCode: `function validateAge(age: number): void {
   if (age < 0) {
@@ -4671,13 +4664,11 @@ try {
   },
   {
     id: 125,
-    title: ' setTimeout e setInterval',
-    level: 'medium',
-    content:
-      'setTimeout executa após um delay. ' +
-      'setInterval executa repetidamente.',
-    task: 'Agende execução de código.',
-    hint: 'setTimeout(() => {}, 1000)',
+    title: " setTimeout e setInterval",
+    level: "medium",
+    content: "setTimeout executa após um delay. " + "setInterval executa repetidamente.",
+    task: "Agende execução de código.",
+    hint: "setTimeout(() => {}, 1000)",
     starterCode: `console.log("Before timeout")
 
 setTimeout(() => {
@@ -4698,13 +4689,11 @@ const interval = setInterval(() => {
   },
   {
     id: 126,
-    title: ' clearTimeout e clearInterval',
-    level: 'medium',
-    content:
-      'clearTimeout cancela um setTimeout. ' +
-      'clearInterval para um setInterval.',
-    task: 'Cancele timers.',
-    hint: 'clearTimeout(timerId)',
+    title: " clearTimeout e clearInterval",
+    level: "medium",
+    content: "clearTimeout cancela um setTimeout. " + "clearInterval para um setInterval.",
+    task: "Cancele timers.",
+    hint: "clearTimeout(timerId)",
     starterCode: `const timeoutId = setTimeout(() => {
   console.log("This won't print")
 }, 1000)
@@ -4725,13 +4714,13 @@ const intervalId = setInterval(() => {
   },
   {
     id: 127,
-    title: ' Object.keys, values, entries',
-    level: 'medium',
+    title: " Object.keys, values, entries",
+    level: "medium",
     content:
-      'Object.keys retorna chaves, values retorna valores, ' +
-      'entries retorna pares [key, value].',
-    task: 'Itere sobre as propriedades de um objeto.',
-    hint: 'Object.keys(obj)',
+      "Object.keys retorna chaves, values retorna valores, " +
+      "entries retorna pares [key, value].",
+    task: "Itere sobre as propriedades de um objeto.",
+    hint: "Object.keys(obj)",
     starterCode: `const user = {
   name: "Alice",
   age: 25,
@@ -4752,13 +4741,13 @@ Object.entries(user).forEach(([key, value]) => {
   },
   {
     id: 128,
-    title: ' Object.assign',
-    level: 'medium',
+    title: " Object.assign",
+    level: "medium",
     content:
-      'Object.assign copia propriedades de objetos fonte para um destino. ' +
-      'É similar ao spread operator.',
-    task: 'Copie propriedades entre objetos.',
-    hint: 'Object.assign(target, source)',
+      "Object.assign copia propriedades de objetos fonte para um destino. " +
+      "É similar ao spread operator.",
+    task: "Copie propriedades entre objetos.",
+    hint: "Object.assign(target, source)",
     starterCode: `const target = { a: 1 }
 const source = { b: 2, c: 3 }
 
@@ -4777,13 +4766,13 @@ console.log("Clone:", clone)`,
   },
   {
     id: 129,
-    title: ' Object.freeze e seal',
-    level: 'medium',
+    title: " Object.freeze e seal",
+    level: "medium",
     content:
-      'Object.freeze impede adição/modificação de propriedades. ' +
-      'Object.sele impede adição mas permite modificação.',
-    task: 'Torne um objeto imutável.',
-    hint: 'Object.freeze(obj)',
+      "Object.freeze impede adição/modificação de propriedades. " +
+      "Object.sele impede adição mas permite modificação.",
+    task: "Torne um objeto imutável.",
+    hint: "Object.freeze(obj)",
     starterCode: `const obj = { name: "Alice", age: 25 }
 
 Object.freeze(obj)
@@ -4809,13 +4798,11 @@ console.log("Sealed new prop:", sealed.newProp)`,
   },
   {
     id: 130,
-    title: ' Array.isArray',
-    level: 'medium',
-    content:
-      'Array.isArray verifica se um valor é um array. ' +
-      'Útil para type guards.',
-    task: 'Verifique se algo é um array.',
-    hint: 'Array.isArray(value)',
+    title: " Array.isArray",
+    level: "medium",
+    content: "Array.isArray verifica se um valor é um array. " + "Útil para type guards.",
+    task: "Verifique se algo é um array.",
+    hint: "Array.isArray(value)",
     starterCode: `console.log("Is array:", Array.isArray([1, 2, 3]))
 console.log("Not array:", Array.isArray("hello"))
 console.log("Not array:", Array.isArray({ length: 3 }))
@@ -4835,13 +4822,13 @@ process({ 0: "a", 1: "b", length: 2 })`,
   },
   {
     id: 131,
-    title: ' Boolean Coercion',
-    level: 'medium',
+    title: " Boolean Coercion",
+    level: "medium",
     content:
-      'Valores podem ser convertidos para boolean com !! ou Boolean(). ' +
+      "Valores podem ser convertidos para boolean com !! ou Boolean(). " +
       'Entenda falsy values: false, 0, "", null, undefined, NaN.',
-    task: 'Converta valores para boolean.',
-    hint: 'const bool = !!value',
+    task: "Converta valores para boolean.",
+    hint: "const bool = !!value",
     starterCode: `console.log("Boolean of 1:", Boolean(1))
 console.log("Boolean of 0:", Boolean(0))
 console.log("Boolean of '':", Boolean(""))
@@ -4860,12 +4847,12 @@ console.log("Bool:", bool)`,
   },
   {
     id: 132,
-    title: ' Number Coercion',
-    level: 'medium',
+    title: " Number Coercion",
+    level: "medium",
     content:
-      'Converta strings para números com Number(), parseInt(), parseFloat(). ' +
-      'Entenda a diferença entre eles.',
-    task: 'Converta strings para números.',
+      "Converta strings para números com Number(), parseInt(), parseFloat(). " +
+      "Entenda a diferença entre eles.",
+    task: "Converta strings para números.",
     hint: "Number('42') ou parseInt('42')",
     starterCode: `console.log("Number('42'):", Number("42"))
 console.log("Number('3.14'):", Number("3.14"))
@@ -4885,12 +4872,12 @@ console.log("+ '3.14':", +"3.14")`,
   },
   {
     id: 133,
-    title: ' String Coercion',
-    level: 'medium',
+    title: " String Coercion",
+    level: "medium",
     content:
-      'Converta valores para string com String() ou toString(). ' +
-      'Template literals também convertem automaticamente.',
-    task: 'Converta valores para string.',
+      "Converta valores para string com String() ou toString(). " +
+      "Template literals também convertem automaticamente.",
+    task: "Converta valores para string.",
     hint: "String(42) ou 42 + ''",
     starterCode: `console.log("String(42):", String(42))
 console.log("String(true):", String(true))
@@ -4910,13 +4897,13 @@ console.log("\`Bool: \${bool}\`:", \`Bool: \${bool}\`)`,
   },
   {
     id: 134,
-    title: ' Default Parameters',
-    level: 'medium',
+    title: " Default Parameters",
+    level: "medium",
     content:
-      'Parâmetros com valor padrão são usados quando o argumento é undefined. ' +
-      'Diferente de opcionais (?), que podem ser omitidos completamente.',
-    task: 'Use parâmetros com valor padrão.',
-    hint: 'function fn(a: number = 10)',
+      "Parâmetros com valor padrão são usados quando o argumento é undefined. " +
+      "Diferente de opcionais (?), que podem ser omitidos completamente.",
+    task: "Use parâmetros com valor padrão.",
+    hint: "function fn(a: number = 10)",
     starterCode: `function greet(name: string = "World"): string {
   return \`Hello, \${name}!\`
 }
@@ -4940,13 +4927,13 @@ console.log(createUser("Charlie", 25))`,
   },
   {
     id: 135,
-    title: ' Rest Parameters',
-    level: 'medium',
+    title: " Rest Parameters",
+    level: "medium",
     content:
-      'Rest parameters收集 múltiplos argumentos em um array. ' +
-      'Útil para funções com número variável de parâmetros.',
-    task: 'Crie uma função com rest parameters.',
-    hint: 'function fn(...args: number[])',
+      "Rest parameters收集 múltiplos argumentos em um array. " +
+      "Útil para funções com número variável de parâmetros.",
+    task: "Crie uma função com rest parameters.",
+    hint: "function fn(...args: number[])",
     starterCode: `function sum(...numbers: number[]): number {
   return numbers.reduce((a, b) => a + b, 0)
 }
@@ -4966,13 +4953,13 @@ console.log("Spread:", sum(...arr))`,
   },
   {
     id: 136,
-    title: ' Arguments Object',
-    level: 'medium',
+    title: " Arguments Object",
+    level: "medium",
     content:
-      'arguments é um objeto array-like disponível em funções normais. ' +
-      'Arrow functions não têm arguments.',
-    task: 'Acesse argumentos via arguments.',
-    hint: 'function fn() { console.log(arguments) }',
+      "arguments é um objeto array-like disponível em funções normais. " +
+      "Arrow functions não têm arguments.",
+    task: "Acesse argumentos via arguments.",
+    hint: "function fn() { console.log(arguments) }",
     starterCode: `function sum(): number {
   let total = 0
   for (let i = 0; i < arguments.length; i++) {
@@ -4992,13 +4979,11 @@ showArgs(1, "hello", true)`,
   },
   {
     id: 137,
-    title: ' IIFE - Immediately Invoked Function',
-    level: 'medium',
-    content:
-      'IIFE é uma função que executa imediatamente. ' +
-      'Útil para criar escopo privado.',
-    task: 'Crie uma IIFE.',
-    hint: '(() => { })()',
+    title: " IIFE - Immediately Invoked Function",
+    level: "medium",
+    content: "IIFE é uma função que executa imediatamente. " + "Útil para criar escopo privado.",
+    task: "Crie uma IIFE.",
+    hint: "(() => { })()",
     starterCode: `(function() {
   const privateVar = "I'm private"
   console.log("IIFE executed:", privateVar)
@@ -5026,13 +5011,13 @@ console.log("Counter:", counter.get())`,
   },
   {
     id: 138,
-    title: ' Callback Functions',
-    level: 'medium',
+    title: " Callback Functions",
+    level: "medium",
     content:
-      'Callbacks são funções passadas como argumento para outras funções. ' +
-      'Comumente usados em event listeners e array methods.',
-    task: 'Passe uma função como callback.',
-    hint: 'arr.forEach((item) => { })',
+      "Callbacks são funções passadas como argumento para outras funções. " +
+      "Comumente usados em event listeners e array methods.",
+    task: "Passe uma função como callback.",
+    hint: "arr.forEach((item) => { })",
     starterCode: `function processArray(
   arr: number[],
   callback: (n: number) => number
@@ -5066,13 +5051,12 @@ withCallback("Alice", (err, result) => {
   },
   {
     id: 139,
-    title: ' for...in e for...of',
-    level: 'medium',
+    title: " for...in e for...of",
+    level: "medium",
     content:
-      'for...in itera sobre chaves de objetos. ' +
-      'for...of itera sobre valores de iteráveis.',
-    task: 'Itere sobre objetos e arrays.',
-    hint: 'for...of para arrays',
+      "for...in itera sobre chaves de objetos. " + "for...of itera sobre valores de iteráveis.",
+    task: "Itere sobre objetos e arrays.",
+    hint: "for...of para arrays",
     starterCode: `const user = { name: "Alice", age: 25, city: "SP" }
 
 console.log("for...in:")
@@ -5094,13 +5078,13 @@ for (const [index, num] of numbers.entries()) {
   },
   {
     id: 140,
-    title: ' while e do...while',
-    level: 'medium',
+    title: " while e do...while",
+    level: "medium",
     content:
-      'while executa enquanto a condição for verdadeira. ' +
-      'do...while executa pelo menos uma vez.',
-    task: 'Use loops while.',
-    hint: 'while (condition) { }',
+      "while executa enquanto a condição for verdadeira. " +
+      "do...while executa pelo menos uma vez.",
+    task: "Use loops while.",
+    hint: "while (condition) { }",
     starterCode: `let count = 0
 
 while (count < 5) {
@@ -5130,13 +5114,11 @@ console.log("Length:", chars)`,
   },
   {
     id: 141,
-    title: ' break e continue',
-    level: 'medium',
-    content:
-      'break sai do loop completamente. ' +
-      'continue pula para a próxima iteração.',
-    task: 'Controle o fluxo de loops.',
-    hint: 'break para sair, continue para pular',
+    title: " break e continue",
+    level: "medium",
+    content: "break sai do loop completamente. " + "continue pula para a próxima iteração.",
+    task: "Controle o fluxo de loops.",
+    hint: "break para sair, continue para pular",
     starterCode: `for (let i = 1; i <= 10; i++) {
   if (i === 5) break
   console.log("i:", i)
@@ -5162,13 +5144,11 @@ console.log("Found:", found)`,
   },
   {
     id: 142,
-    title: ' Labeled Statements',
-    level: 'medium',
-    content:
-      'Labels identificam loops para break/continue. ' +
-      'Útil para loops aninhados.',
-    task: 'Use labels para controlar loops aninhados.',
-    hint: 'label: for (...)',
+    title: " Labeled Statements",
+    level: "medium",
+    content: "Labels identificam loops para break/continue. " + "Útil para loops aninhados.",
+    task: "Use labels para controlar loops aninhados.",
+    hint: "label: for (...)",
     starterCode: `outer: for (let i = 1; i <= 3; i++) {
   for (let j = 1; j <= 3; j++) {
     console.log(\`i=\${i}, j=\${j}\`)
@@ -5192,12 +5172,10 @@ outer2: while (i < 3) {
   },
   {
     id: 143,
-    title: ' typeof operator',
-    level: 'medium',
-    content:
-      'typeof retorna o tipo de um valor como string. ' +
-      'Útil para type guards básicos.',
-    task: 'Use typeof para verificar tipos.',
+    title: " typeof operator",
+    level: "medium",
+    content: "typeof retorna o tipo de um valor como string. " + "Útil para type guards básicos.",
+    task: "Use typeof para verificar tipos.",
     hint: "typeof value === 'string'",
     starterCode: `console.log("typeof 'hello':", typeof "hello")
 console.log("typeof 42:", typeof 42)
@@ -5220,13 +5198,13 @@ console.log(process(42))`,
   },
   {
     id: 144,
-    title: ' instanceof',
-    level: 'medium',
+    title: " instanceof",
+    level: "medium",
     content:
-      'instanceof verifica se um objeto é instância de uma classe. ' +
-      'Também funciona para objetos built-in como Array, Date.',
-    task: 'Use instanceof para verificar classes.',
-    hint: 'value instanceof Array',
+      "instanceof verifica se um objeto é instância de uma classe. " +
+      "Também funciona para objetos built-in como Array, Date.",
+    task: "Use instanceof para verificar classes.",
+    hint: "value instanceof Array",
     starterCode: `class Dog {
   bark() { return "Woof!" }
 }
@@ -5257,12 +5235,12 @@ process([1, 2, 3])`,
   },
   {
     id: 145,
-    title: ' in operator',
-    level: 'medium',
+    title: " in operator",
+    level: "medium",
     content:
-      'in verifica se uma propriedade existe em um objeto. ' +
-      'Retorna true para próprias e herdadas (com hasOwnProperty para só próprias).',
-    task: 'Use in para verificar propriedades.',
+      "in verifica se uma propriedade existe em um objeto. " +
+      "Retorna true para próprias e herdadas (com hasOwnProperty para só próprias).",
+    task: "Use in para verificar propriedades.",
     hint: "'prop' in object",
     starterCode: `const user = { name: "Alice", age: 25 }
 
@@ -5291,13 +5269,11 @@ console.log(hasProp(car, "year"))`,
   },
   {
     id: 146,
-    title: ' delete operator',
-    level: 'medium',
-    content:
-      'delete remove propriedades de objetos. ' +
-      'Não funciona em variáveis ou funções.',
-    task: 'Remova propriedades de objetos.',
-    hint: 'delete object.property',
+    title: " delete operator",
+    level: "medium",
+    content: "delete remove propriedades de objetos. " + "Não funciona em variáveis ou funções.",
+    task: "Remova propriedades de objetos.",
+    hint: "delete object.property",
     starterCode: `const user = { name: "Alice", age: 25, city: "SP" }
 
 console.log("Before delete:", user)
@@ -5315,13 +5291,13 @@ console.log("'2' in arr:", "2" in arr)`,
   },
   {
     id: 147,
-    title: ' void operator',
-    level: 'medium',
+    title: " void operator",
+    level: "medium",
     content:
-      'void avalia uma expressão e retorna undefined. ' +
-      'Útil para IIFEs ou previnir navegação em links.',
-    task: 'Use void operator.',
-    hint: 'void expression',
+      "void avalia uma expressão e retorna undefined. " +
+      "Útil para IIFEs ou previnir navegação em links.",
+    task: "Use void operator.",
+    hint: "void expression",
     starterCode: `console.log("void 0:", void 0)
 console.log("void 1+1:", void 1 + 1)
 
@@ -5341,13 +5317,13 @@ console.log("Use void for preventDefault")`,
   },
   {
     id: 148,
-    title: ' Comma Operator',
-    level: 'medium',
+    title: " Comma Operator",
+    level: "medium",
     content:
-      'A vírgula avalia expressões da esquerda para direita e retorna a última. ' +
-      'Útil em loops for e expressões compactas.',
-    task: 'Use operador vírgula.',
-    hint: '(a, b, c) - retorna c',
+      "A vírgula avalia expressões da esquerda para direita e retorna a última. " +
+      "Útil em loops for e expressões compactas.",
+    task: "Use operador vírgula.",
+    hint: "(a, b, c) - retorna c",
     starterCode: `const result = (1, 2, 3)
 console.log("Result:", result)
 
@@ -5365,13 +5341,13 @@ console.log("Coords:", coords)`,
   },
   {
     id: 149,
-    title: ' Bitwise Operators',
-    level: 'medium',
+    title: " Bitwise Operators",
+    level: "medium",
     content:
-      'Operadores bitwise manipulam bits de números. ' +
-      'Útil para flags, criptografia, otimização.',
-    task: 'Use operadores bitwise.',
-    hint: '& | ^ ~ << >>',
+      "Operadores bitwise manipulam bits de números. " +
+      "Útil para flags, criptografia, otimização.",
+    task: "Use operadores bitwise.",
+    hint: "& | ^ ~ << >>",
     starterCode: `console.log("5 & 3:", 5 & 3)
 console.log("5 | 3:", 5 | 3)
 console.log("5 ^ 3:", 5 ^ 3)
@@ -5398,12 +5374,12 @@ console.log("After removing A:", flags)`,
   },
   {
     id: 150,
-    title: ' eval',
-    level: 'medium',
+    title: " eval",
+    level: "medium",
     content:
-      'eval executa uma string como código JavaScript. ' +
-      'Evite usar em código de produção por segurança.',
-    task: 'Use eval com cuidado.',
+      "eval executa uma string como código JavaScript. " +
+      "Evite usar em código de produção por segurança.",
+    task: "Use eval com cuidado.",
     hint: "eval('code string')",
     starterCode: `const code = "2 + 2"
 console.log("Result:", eval(code))
